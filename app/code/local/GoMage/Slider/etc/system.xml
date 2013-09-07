@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<!--
+ /**
+  * GoMage Slider Extension
+ *
+ * @category     Extension
+ * @copyright    Copyright (c) 2010-2012 GoMage (http://www.gomage.com)
+ * @author       GoMage
+ * @license      http://www.gomage.com/license-agreement/  Single domain license
+ * @terms of use http://www.gomage.com/terms-of-use
+ * @version      Release: 1.0
+ */
+ -->
+<config>
+	<tabs>
+        <gomage translate="label">
+            <label>GoMage</label>
+            <sort_order>200</sort_order>
+        </gomage>
+    </tabs>
+	<sections>		
+		<gomage_activation>
+			<label>Activation</label>
+            <tab>gomage</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>1000</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+				<slider translate="label">
+					<label>GoMage Slider v.1.0</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>30</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<key>
+							<label>Activation Key</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>5</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>0</show_in_website>
+							<show_in_store>0</show_in_store>
+						</key>
+						
+						<websites translate="label">
+							<label>Select Websites</label>
+							<frontend_type>checkbox</frontend_type>
+							<source_model>adminhtml/system_config_source_website</source_model>
+							<frontend_model>gomage_slider/adminhtml_config_form_renderer_website</frontend_model>
+							<sort_order>20</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>0</show_in_website>
+							<show_in_store>0</show_in_store>
+						</websites>
+						
+					</fields>
+				</slider>
+			</groups>
+		</gomage_activation>				
+	</sections>
+</config>

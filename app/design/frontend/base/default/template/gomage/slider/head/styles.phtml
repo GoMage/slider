@@ -1,0 +1,105 @@
+<?php
+ /**
+ * GoMage Slider Extension
+ *
+ * @category     Extension
+ * @copyright    Copyright (c) 2010-2012 GoMage (http://www.gomage.com)
+ * @author       GoMage
+ * @license      http://www.gomage.com/license-agreement/  Single domain license
+ * @terms of use http://www.gomage.com/terms-of-use
+ * @version      Release: 1.0
+ */
+?>
+<style type="text/css">
+	
+	<?php foreach ($this->getItems() as $item): ?>
+
+		#gomage-slider-block-<?php echo $item->getId() ?>{	
+			<?php 
+				echo $item->blockCss();
+			?>
+  	   }
+
+	   #gomage-slider-block-<?php echo $item->getId() ?> .gomage-content-item{	
+			<?php echo $item->imageCss();?>
+			overflow: hidden;
+  	   }
+
+	   #gomage-slider-block-<?php echo $item->getId() ?> .gomage-content{	
+			<?php echo $item->contentCss();?>
+  	   }
+
+	   #gomage-slider-block-<?php echo $item->getId() ?> .gomage-content-item .gomage-content-image{	
+			<?php echo $item->imageCss();?>
+			position: absolute;
+  	   }
+
+	   #gomage-slider-block-<?php echo $item->getId() ?> .gomage-content-item .gomage-content-image img{	
+			<?php echo $item->imageCss();?>
+  	   }
+
+     #gomage-slider-block-<?php echo $item->getId() ?> .gomage-content{	
+			float: left;
+  	   }
+
+	   #gomage-slider-block-<?php echo $item->getId() ?> .gomage-slider-container{	
+			<?php 
+				echo $item->containerCssStyle();
+			?>
+  	   }
+
+	   #gomage-slider-block-<?php echo $item->getId() ?> .gomage-slider-sidebar{	
+			<?php 
+				echo $item->sideBarCss();
+			?>
+  	   }
+
+	   #gomage-slider-block-<?php echo $item->getId() ?> .gomage-sidebar-item{	
+			<?php 
+				echo $item->sideBarItemCss();
+			?>
+  	   }
+       
+    /* Arrow Color
+    -------------------------------------------------- */
+    
+      /* Left Arrow */
+      #gomage-slider-block-<?php echo $item->getId() ?> .gomage-arrow-left span{
+        border-right-color: <?php echo $item->getArrowColor(); ?>;
+        }
+        
+      /* Right Arrow */
+      #gomage-slider-block-<?php echo $item->getId() ?> .gomage-arrow-right span{
+        border-left-color: <?php echo $item->getArrowColor(); ?>;
+        }
+        
+    /* Mouse Over Arrow Color
+    -------------------------------------------------- */
+    
+      /* Left Arrow */
+      #gomage-slider-block-<?php echo $item->getId() ?> .gomage-arrow-left:hover span{
+        border-right-color: <?php echo $item->getMouseOverColor(); ?>;
+        }
+        
+      /* Right Arrow */
+      #gomage-slider-block-<?php echo $item->getId() ?> .gomage-arrow-right:hover span{
+        border-left-color: <?php echo $item->getMouseOverColor(); ?>;
+        } 
+
+    
+	<?php 
+	if ( $item->getArrowsType() == GoMage_Slider_Model_Adminhtml_System_Config_Source_Navigation_Arrowstype::STYLE2 ):
+	?>
+      /* Mouse Over Background Color
+      -------------------------------------------------- */
+      #gomage-slider-block-<?php echo $item->getId() ?> .gps-arrow:hover{
+        background: <?php echo $item->getMouseOverBackground(); ?>;
+        }
+	<?php 
+	endif;
+	?>
+
+		 
+	<?php endforeach; ?>
+  
+</style>

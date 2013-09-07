@@ -1,0 +1,49 @@
+<?php
+ /**
+ * GoMage Slider Extension
+ *
+ * @category     Extension
+ * @copyright    Copyright (c) 2010-2012 GoMage (http://www.gomage.com)
+ * @author       GoMage
+ * @license      http://www.gomage.com/license-agreement/  Single domain license
+ * @terms of use http://www.gomage.com/terms-of-use
+ * @version      Release: 1.0
+ */
+?>
+
+<style type="text/css"> 
+	#window_content{width: 98% !important;}
+</style>
+
+<script type="text/javascript">
+//<![CDATA[
+if (typeof(tinyMceWysiwygSetup) == 'function'){
+	tinyMceWysiwygSetup.prototype.setup = function(mode)
+	{
+	    if (this.config.widget_plugin_src) {
+	        tinymce.PluginManager.load('magentowidget', this.config.widget_plugin_src);
+	    }
+	
+	    if (this.config.plugins) {
+	        (this.config.plugins).each(function(plugin){
+	            tinymce.PluginManager.load(plugin.name, plugin.src);
+	        });
+	    }
+	    
+	    var settings = this.getSettings(mode); 
+	    settings.extended_valid_elements = 'iframe[src|style|width|height|scrolling|marginwidth|marginheight|frameborder],style,script';	
+	    tinyMCE.init(settings);
+	}
+}
+//]]>
+</script> 
+
+<?php $_element = $this->getElement() ?>
+<?php if (!$_element->getNoDisplay()): ?>
+<tr>
+    <td class="label"><label for="window_content"><?php echo $_element->getLabel(); ?></label></td>
+    <td class="value" style="width: 100%;">
+        <?php echo trim($_element->getElementHtml()) ?>
+	</td>
+</tr>
+<?php endif; ?>

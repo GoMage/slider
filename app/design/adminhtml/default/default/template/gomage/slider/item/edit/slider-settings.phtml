@@ -1,0 +1,104 @@
+<?php
+ /**
+ * GoMage Slider Extension
+ *
+ * @category     Extension
+ * @copyright    Copyright (c) 2010-2012 GoMage (http://www.gomage.com)
+ * @author       GoMage
+ * @license      http://www.gomage.com/license-agreement/  Single domain license
+ * @terms of use http://www.gomage.com/terms-of-use
+ * @version      Release: 1.0
+ */
+	
+	if($data = $this->getBlockSlides())
+	{
+		$data = json_decode($data, true);	
+	}
+	else
+	{
+		$data = array();
+	}
+
+?>
+<div class="entry-edit">
+	
+	<div id="content_fieldset" class="fieldset ">
+		
+		<div class="grid" style="clear:both">
+		<style>
+					.grid table td {vertical-align:middle;}
+		</style>
+		<table cellspacing="0" cellpadding="0" class="data" style="width:100%;">
+			<thead>
+				<tr class="headings">
+				<th width="20"><?php echo $this->__('Order')?></th>
+				<th style="width:160px;"><?php echo $this->__('Slider Name')?></th>
+				<th><?php echo $this->__('Slider Effect')?></th>
+				<th style="width:66px;"><?php echo $this->__('Action')?></th>
+				</tr>
+			</thead>
+			<tbody id="mapping-table-body">
+				<?php 
+				    if(empty($data)){
+                		$rows_count = 5;
+                	}else{
+                		$rows_count = count($data);
+                	}				    
+                	echo $this->getLayout()->createBlock('adminhtml/template')
+				                ->setData('block_slides', $data)
+				                ->setData('slides', $this->getSlides())
+	            				->setTemplate('gomage/slider/item/edit/mapping.phtml')->toHtml(); 
+	            ?>
+			</tbody>
+		</table>
+		<div class="button-set">
+			<script type="text/javascript">
+				
+				var mappingTotalRows = <?php echo $rows_count?>;
+
+				var slideOptions = '<?php
+									foreach ($this->getSlides() as $slide):
+										echo '<option value="'. $slide['id'] .'">' . $slide['name'] .'</option>';
+									endforeach;
+									?>';
+				
+				var effectOptions = '<?php
+									foreach( Mage::helper('gomage_slider')->effectToOptionHash() as $key => $name ):
+										echo '<option value="'. $key .'">' .$name .'</option>';
+									endforeach;
+									?>';
+				
+				function removeMappingRow(e){
+					e.parentNode.parentNode.parentNode.removeChild(e.parentNode.parentNode);
+				}
+				
+				function addColumn(tr, content){
+					
+					td = document.createElement('td');
+					td.innerHTML = content;
+					tr.appendChild(td);
+					
+				}
+				
+				function addMappingRow(){
+					
+					var i = ++mappingTotalRows;
+					var tr = document.createElement('tr');
+					
+					var attribute = '<?php echo addslashes($this->getAttributeSelect("[iterator]"));?>';
+					
+					addColumn(tr, '<div style="padding:0 2px;border-color:#AAAAAA #C8C8C8 #C8C8C8 #AAAAAA;border-style:solid;border-width:1px;"><input style="width:100%;border:0;padding:0;" class="input-text" name="field['+i+'][order]" value="" /></div>');
+					addColumn(tr, '<div style="margin: 2px;"><select style="width:100%;" name="field['+i+'][id]">'+slideOptions+'</select></div>');
+					addColumn(tr, '<div style="margin: 2px;"><select style="width:100%;" type="text" name="field['+i+'][effect]">'+effectOptions+'</select></div>');
+					addColumn(tr, '<button onclick="removeMappingRow(this);return false;" class="button"><span><span><?php echo $this->__('Remove')?></span></span></button>');
+					
+					$('mapping-table-body').appendChild(tr);
+					
+				}
+				
+			</script>
+			<p style="margin-top:10px;"><button onclick="addMappingRow();return false;" class="button"><span><span><?php echo $this->__('Add New Row')?></span></span></button></p>
+		</div>
+		</div>
+	</div>
+</div>

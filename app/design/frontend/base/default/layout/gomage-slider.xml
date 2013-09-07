@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!--
+ /**
+ * GoMage Slider Extension
+ *
+ * @category     Extension
+ * @copyright    Copyright (c) 2010-2012 GoMage (http://www.gomage.com)
+ * @author       GoMage
+ * @license      http://www.gomage.com/license-agreement/  Single domain license
+ * @terms of use http://www.gomage.com/terms-of-use
+ * @version      Release: 1.0
+ */ 
+ -->
+<layout version="0.1.0">
+	<default>   
+        <reference name="head"> 
+            <action method="addJs"><script>gomage/slider/wipe.js</script></action>
+            <action method="addJs"><script>gomage/slider.js</script></action>
+                	    		    		    		    		    		      		 
+    		 <action method="addItem"><type>skin_css</type><name>css/gomage/slider.css</name></action>
+    		<block type="gomage_slider/head" name="gomage.slider.head"/> 
+    	</reference>	   
+    </default>
+</layout>

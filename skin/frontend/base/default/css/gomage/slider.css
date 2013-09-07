@@ -1,0 +1,213 @@
+/*!
+ * GoMage Slider styles v1.0
+ *
+ * Copyright 2012 GoMage.com
+ * http://www.gomage.com/
+ *
+ */
+
+/* Common
+-------------------------------------------------- */
+.gomage-content-container {
+  position:absolute; 
+  z-index:2;
+  }
+.gomage-image-container {
+  position:absolute; 
+  z-index:1;
+  }
+.gomage-slider-sidebar div.active{
+  border:1px solid blue;
+  }
+.gomage-content-image {
+  overflow:hidden;
+  }
+.gomage-tagline-item {
+  overflow:hidden;
+  }
+.gomage-slider-navigationbar {
+  overflow:hidden;
+  }
+.gomage-navigation-bar-item {
+  float:right;
+  }
+.gomage-tagline-item {
+  float:left;
+  }
+.gomage-content-text {
+  overflow:hidden;
+  }
+.gomage-content-title {
+  margin-bottom:10px;
+  }
+.gomage-slider-content{
+  position:relative;
+  }
+.gomage-content-text-bg{
+  position:absolute;
+  z-index:1;
+  }
+.gomage-content-text{
+  position:absolute;
+  z-index:2;
+  }
+  
+/* Arrows
+-------------------------------------------------- */
+.gps-arrow {
+  position:absolute;
+  top:0;
+  z-index:3;
+  height:100%;
+  }
+.gomage-arrow-left{
+  left:0;
+  }
+.gomage-arrow-right{
+  right:0;
+  }
+  .gps-arrow a{
+    position:relative;
+    display:block;
+    width:35px;
+    height:100%;
+    text-indent:-999em;
+    zoom:1;
+    }
+  .gps-arrow span{
+    position:absolute;
+    top:50%;
+    left:10px;
+    display:block;
+    overflow:hidden;
+    margin:-7px 0 0;
+    width:0;
+    height:0;
+    cursor:pointer;
+    }
+  .gomage-arrow-left span{
+    border-top:15px solid transparent;
+    border-right:17px solid #0b7ac0;
+    border-bottom:15px solid transparent;
+    }
+  .gomage-arrow-right span{
+    border-top:15px solid transparent;
+    border-bottom:15px solid transparent;
+    border-left:17px solid #0b7ac0;
+    } 
+  .gomage-arrow-left:hover span{
+    border-right-color:#f00;
+    }
+  .gomage-arrow-right:hover span{
+    border-left-color:#f00;
+    }
+.gps-arrows-hover .gps-arrow{
+  display:none;
+  }
+  .gps-arrows-hover .gomage-slider-content:hover .gps-arrow{
+    display:block;
+    }
+    
+/* Pause button */
+.gomage-play-pause{
+  position:absolute;
+  right:10px;
+  bottom:11px;
+  z-index:4;
+  }
+  .gomage-play-pause a{
+    display:block;
+    }
+    .gomage-play a > span{
+      display:block;
+      overflow:hidden;
+      width:0px;
+      height:0px;
+      border-top:5px solid transparent;
+      border-bottom:5px solid transparent;
+      border-left:7px solid #000;
+      }
+      .gomage-play a > span + span{
+        display:none;
+        }
+  .gomage-pause a{
+    position:relative;
+    overflow:hidden;
+    width:6px;
+    height:10px;
+    }
+    .gomage-pause span{
+      position:absolute;
+      top:0;
+      left:0;
+      overflow:hidden;
+      width:2px;
+      height:10px;
+      background:#000;
+      }
+      .gomage-pause span + span{
+        left:4px;
+        }
+
+/* Nav bar
+-------------------------------------------------- */
+.navigation-bar-list{
+  position:absolute;
+  right:0;
+  bottom:10px;
+  left:0;
+  z-index:3;
+  text-align:center;
+  line-height:10px;
+  }
+  .navigation-bar-list li{
+    display:inline-block;
+    margin:0 2px;  
+    cursor:pointer;
+    zoom:1;
+    /display:inline;
+    }
+
+/* Numbers */    
+.navigation-bar-numbers li{
+  padding:2px 7px;
+  background:#fff;
+  color:#000;
+  font-weight:700;
+  font-size:12px;
+  }
+  .navigation-bar-numbers li:hover,
+  .navigation-bar-numbers li.active{
+    background:#000;
+    color:#fff;
+    }
+
+/* Square */
+.navigation-bar-square li{
+  overflow:hidden;
+  width:10px;
+  height:10px;
+  background:#fff;
+  }
+  .navigation-bar-square li:hover,
+  .navigation-bar-square li.active{
+    background:#000;
+    }
+
+/* Circle */    
+.navigation-bar-circle li{
+  overflow:hidden;
+  width:10px;
+  height:10px;
+  -webkit-border-radius:10px;
+     -moz-border-radius:10px;
+          border-radius:10px;
+  background:#fff;
+  -webkit-box-shadow:0 0 5px rgba(0,0,0,0.5);
+     -moz-box-shadow:0 0 5px rgba(0,0,0,0.5);
+          box-shadow:0 0 5px rgba(0,0,0,0.5);          
+  }
+  .navigation-bar-circle li:hover,
+  .navigation-bar-circle li.active{
+    background:#000;
+    }

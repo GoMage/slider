@@ -1,0 +1,190 @@
+<?xml version="1.0"?>
+<!--
+ /**
+ * GoMage Slider Extension
+ *
+ * @category     Extension
+ * @copyright    Copyright (c) 2010-2012 GoMage (http://www.gomage.com)
+ * @author       GoMage
+ * @license      http://www.gomage.com/license-agreement/  Single domain license
+ * @terms of use http://www.gomage.com/terms-of-use
+ * @version      Release: 1.0
+ */ 
+ -->
+<config>
+    <modules>
+        <GoMage_Slider>
+            <version>1.0</version>
+        </GoMage_Slider>
+    </modules>
+	<frontend>
+        <routers>
+            <gomage_slider>
+                <use>standard</use>
+                <args>
+                    <module>GoMage_Slider</module>
+                    <frontName>slider</frontName>
+                </args>
+            </gomage_slider>
+        </routers>
+        <layout>
+            <updates>
+                <gomage_slider module="gomage_slider">
+                    <file>gomage-slider.xml</file>
+                </gomage_slider>
+            </updates>
+        </layout>
+    </frontend>
+    <admin>
+        <routers>
+			<gomage_slider>
+				<use>admin</use>
+				<args>
+					<module>GoMage_Slider</module>
+					<frontName>gomage_slider</frontName>
+				</args>
+			</gomage_slider>
+        </routers>
+    </admin>
+    <adminhtml>
+    	<translate>
+			<modules>
+				<GoMage_Slider>
+					<files>
+						<default>GoMage_Slider.csv</default>
+					</files>
+				</GoMage_Slider>
+			</modules>
+        </translate>
+        <events>            
+            <admin_system_config_changed_section_gomage_activation>
+                <observers>
+                    <slider_collect_totals_after>
+                        <type>model</type>
+                        <class>gomage_slider/observer</class>
+                        <method>checkK</method>
+                    </slider_collect_totals_after>
+                </observers>
+            </admin_system_config_changed_section_gomage_activation>
+        </events> 
+        <menu>
+			<cms>
+				<children>
+					<gomage_slider> 
+						<title>Slider</title>
+						<sort_order>20</sort_order>           
+						<action>gomage_slider/adminhtml_items</action>
+						<children>
+							<gomage_manage_slider>
+								<title>Manage Slider Blocks</title>
+								<sort_order>10</sort_order>
+								<action>gomage_slider/adminhtml_items</action>
+							</gomage_manage_slider>
+							<gomage_manage_slider_slides>
+                                <title>Manage Slides</title>
+                                <sort_order>10</sort_order>
+                                <action>gomage_slider/adminhtml_slides</action>
+                            </gomage_manage_slider_slides>
+						</children>	
+					</gomage_slider> 
+				</children>
+			</cms>
+		</menu>         
+        <layout>
+            <updates>
+                <gomage_slider>
+                    <file>gomage-slider.xml</file>
+                </gomage_slider>
+            </updates>
+        </layout>
+        <acl>
+	        <resources>
+	            <admin>
+	                <children>
+	                    <system>
+	                        <children>
+	                            <config>
+	                                <children>	                                    
+	                                    <gomage_activation>
+	                                    	<title>GoMage - Activation</title>
+	                                    </gomage_activation>	                                    
+	                                </children>
+	                            </config>
+	                        </children>
+	                    </system>
+	                    <cms>
+	                    	<children>
+	                    		<gomage_slider>
+                                	<title>Slider</title>
+                                	<children>
+                                		<gomage_manage_slider>
+											<title>Manage Slider Blocks</title>											
+										</gomage_manage_slider>
+                                	</children>
+                                	<children>
+                                        <gomage_manage_slider_slides>
+                                            <title>Manage Slides</title>                                            
+                                        </gomage_manage_slider_slides>
+                                    </children>	
+                                </gomage_slider>
+	                    	</children>	
+	                    </cms>	
+	                </children>
+	            </admin>
+	        </resources>
+	    </acl>
+	</adminhtml>
+
+	<global>
+	   
+		<models>
+            <gomage_slider>
+                <class>GoMage_Slider_Model</class>
+                <resourceModel>gomage_slider_mysql4</resourceModel>
+            </gomage_slider>
+            <gomage_slider_mysql4>
+                <class>GoMage_Slider_Model_Mysql4</class>
+                <entities>
+                    <item>
+                        <table>gomage_slider_items</table>
+                    </item>
+                    <slide>
+                        <table>gomage_slider_slides</table>
+                    </slide>                 
+                </entities>
+            </gomage_slider_mysql4>
+        </models>
+		
+		<blocks>
+            <gomage_slider>
+                <class>GoMage_Slider_Block</class>
+            </gomage_slider>
+        </blocks>
+        
+        <resources>
+            <gomage_slider_setup>
+                <setup>
+                    <module>GoMage_Slider</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </gomage_slider_setup>
+            <gomage_slider_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </gomage_slider_write>
+            <gomage_slider_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </gomage_slider_read>
+        </resources>
+        
+        <helpers>
+			<gomage_slider><class>GoMage_Slider_Helper</class></gomage_slider>
+		</helpers>
+	</global>	
+	 
+</config>

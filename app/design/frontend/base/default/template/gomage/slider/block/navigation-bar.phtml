@@ -1,0 +1,41 @@
+<?php
+ /**
+ * GoMage Slider Extension
+ *
+ * @category     Extension
+ * @copyright    Copyright (c) 2010-2012 GoMage (http://www.gomage.com)
+ * @author       GoMage
+ * @license      http://www.gomage.com/license-agreement/  Single domain license
+ * @terms of use http://www.gomage.com/terms-of-use
+ * @version      Release: 1.0
+ */
+?>
+<?php 
+	$item = $this->getItem();
+	$slides = $this->getSlides(); 
+?>
+<?php
+if ( $item->getShowNavigationBar() == GoMage_Slider_Model_Adminhtml_System_Config_Source_Navigation_Show::CIRCLE
+	 	||
+	 $item->getShowNavigationBar() == GoMage_Slider_Model_Adminhtml_System_Config_Source_Navigation_Show::SQUARE
+		):
+      if ( isset( $slides[$item->getId()] ) ):
+		$i = 1;
+		$navigation_bar_style = GoMage_Slider_Model_Adminhtml_System_Config_Source_Navigation_Show::toOptionHash();
+		?>
+		<ul class="navigation-bar-list navigation-bar-<?php echo $navigation_bar_style[$item->getShowNavigationBar()]; ?> ">
+			<?php 
+			foreach( $slides[$item->getId()] as $_order => $_item ):
+			?>
+				<li id="slide-order-<?php echo $_order;?>" class="sidebar-link <?php echo ( $i == 1 ) ? 'active' : ''; ?>">
+					
+				</li>
+			<?php 
+			$i++;
+			endforeach;
+			?>
+		</ul>
+		<?php 
+	endif;
+endif;
+?>

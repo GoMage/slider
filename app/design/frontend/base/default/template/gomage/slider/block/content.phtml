@@ -1,0 +1,82 @@
+<?php
+ /**
+ * GoMage Slider Extension
+ *
+ * @category     Extension
+ * @copyright    Copyright (c) 2010-2012 GoMage (http://www.gomage.com)
+ * @author       GoMage
+ * @license      http://www.gomage.com/license-agreement/  Single domain license
+ * @terms of use http://www.gomage.com/terms-of-use
+ * @version      Release: 1.0
+ */
+?>
+<?php 
+	$item = $this->getBlockItem();
+	$slides = $this->getBlockSlides(); 
+	$_slide = array_shift(array_values($slides[$item->getId()]));
+	$_helper = Mage::helper('gomage_slider');
+?>
+<?php 
+	if ( $_slide ):
+	?>
+    <?php 
+    if ( $item->getShowArrows() == GoMage_Slider_Model_Adminhtml_System_Config_Source_Navigation_Arrows::ALWAYS
+    		||
+    	 $item->getShowArrows() == GoMage_Slider_Model_Adminhtml_System_Config_Source_Navigation_Arrows::MOUSE ):
+    ?>
+      <div class="gps-arrow gomage-arrow-left">
+        <a href="javascript: GomageSlider.returnNull();"><span><?php echo $this->__('Previous') ?></span></a>
+      </div>
+    <?php 
+    endif;
+    ?>
+		<div class="gomage-content-item">
+			<div class="gomage-image-container">
+				<div class="gomage-content-image" id="gomage-content-image" style="position: absolute;">
+					<a id="slide-id" class="slide-id" <?php echo $_slide->openSliderLinkInBlank(); ?> <?php if ( $_slide->getSliderLink() != '' ):?>href="<?php echo $_slide->getSliderLink(); ?>"<?php endif; ?>><img id="gomage-content-image-src" alt="<?php echo $_slide->getAltText(); ?>" src="<?php echo Mage::getBaseUrl('media').'slider/' . $_slide->getImage(); ?>" /></a>
+				</div>
+			</div>
+
+			<?php 
+			if ( $_slide->getShowSliderText() == GoMage_Slider_Model_Adminhtml_System_Config_Source_Enabledisable::YES ):
+			?>
+			<div class="gomage-content-container" style="<?php echo $item->containerCss(); ?>">
+				<div class="gomage-content" >
+				
+					<div class="gomage-content-text-bg" style="<?php echo $_helper->getSlideTextBgStyle($_slide, $item); ?>">
+						
+					</div>
+					<div class="gomage-content-text" style="<?php echo $_helper->getSlideTextStyle($_slide, $item); ?>">
+						<?php echo $_slide->getSliderText(); ?>
+					</div>
+				</div>
+			</div>
+			<?php 
+			endif;
+			?>
+		</div>
+    <?php 
+    if ( $item->getShowArrows() == GoMage_Slider_Model_Adminhtml_System_Config_Source_Navigation_Arrows::ALWAYS
+    		||
+    	 $item->getShowArrows() == GoMage_Slider_Model_Adminhtml_System_Config_Source_Navigation_Arrows::MOUSE ):
+    ?>
+      <div class="gps-arrow gomage-arrow-right">
+        <a href="javascript: GomageSlider.returnNull();"><span><?php echo $this->__('Next') ?></span></a>
+      </div>
+    <?php 
+    endif;
+    
+    if ( $item->getEnableAutostart() == GoMage_Slider_Model_Adminhtml_System_Config_Source_Enabledisable::YES && $item->getShowPauseButton() == GoMage_Slider_Model_Adminhtml_System_Config_Source_Enabledisable::YES ):
+	?>
+		<div class="gomage-play-pause gomage-pause">
+			<a href="javascript: GomageSlider.returnNull();" title="<?php echo $this->__('Pause') ?>"><span></span><span></span></a>
+		</div>
+	<?php 
+	endif;
+    ?>  
+    
+    <?php echo $this->getNavigationbarHtml($item, $slides); ?>
+    
+	<?php 
+	endif;
+?>

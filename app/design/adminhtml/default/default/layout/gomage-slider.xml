@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!--
+ /**
+ * GoMage Slider Extension
+ *
+ * @category     Extension
+ * @copyright    Copyright (c) 2010-2012 GoMage (http://www.gomage.com)
+ * @author       GoMage
+ * @license      http://www.gomage.com/license-agreement/  Single domain license
+ * @terms of use http://www.gomage.com/terms-of-use
+ * @version      Release: 1.0
+ */ 
+ -->
+<layout version="1.0">
+    <gomage_slider_adminhtml_items_index>    	
+        <reference name="content">
+            <block type="gomage_slider/adminhtml_items" name="gomage_slider.admin.items" />
+        </reference>
+    </gomage_slider_adminhtml_items_index>
+    <gomage_slider_adminhtml_items_edit>
+    	<update handle="editor"/>
+    	<reference name="head">     
+            <action method="addJs"><script>gomage/slider-admin.js</script></action>           
+        </reference> 
+    </gomage_slider_adminhtml_items_edit>
+    <gomage_slider_adminhtml_items_new>
+    	<update handle="editor"/>
+    	<reference name="head">     
+            <action method="addJs"><script>gomage/slider-admin.js</script></action>           
+        </reference>
+    </gomage_slider_adminhtml_items_new>
+    
+    
+    <gomage_slider_adminhtml_slides_index>     
+        <reference name="content">
+            <block type="gomage_slider/adminhtml_slides" name="gomage_slider.admin.slides" />
+        </reference>
+    </gomage_slider_adminhtml_slides_index>
+    <gomage_slider_adminhtml_slides_edit>
+        <update handle="editor"/> 
+    </gomage_slider_adminhtml_slides_edit>
+    <gomage_slider_adminhtml_slides_new>
+        <update handle="editor"/>           
+    </gomage_slider_adminhtml_slides_new>
+</layout>

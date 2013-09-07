@@ -1,0 +1,53 @@
+<?php
+ /**
+ * GoMage Slider Extension
+ *
+ * @category     Extension
+ * @copyright    Copyright (c) 2010-2012 GoMage (http://www.gomage.com)
+ * @author       GoMage
+ * @license      http://www.gomage.com/license-agreement/  Single domain license
+ * @terms of use http://www.gomage.com/terms-of-use
+ * @version      Release: 1.0
+ */
+
+	$data = $this->getBlockSlides();
+	
+	if(empty($data)){
+		$rows_count = 0;
+	}else{
+		$rows_count = count($data);
+	}
+	
+?>
+<?php for($i=0;$i<$rows_count;$i++):?>
+    <tr>
+    	<td><div style="padding:0 2px;border-color:#AAAAAA #C8C8C8 #C8C8C8 #AAAAAA;border-style:solid;border-width:1px;"><input style="width:100%;border:0;padding:0;" type="text" class="input-text" name="field[<?php echo $i;?>][order]" value="<?php echo @$data[$i]['order'];?>" /></div></td>
+    	<td>
+    		<div style="margin: 2px;">
+    		<select style="width:100%;" name="field[<?php echo $i;?>][id]">
+    			<?php 
+    			foreach ($this->getSlides() as $slide):
+    			?>
+    				<option <?php echo isset($data[$i]['id']) && $data[$i]['id'] == $slide['id'] ? 'selected="selected"' : '';?> value="<?php echo $slide['id']; ?>"><?php echo $slide['name']; ?></option>
+    			<?php 
+    			endforeach;
+    			?>
+    		</select>
+    		</div>
+    	</td>
+    	<td>
+    		<div style="margin: 2px;">
+    		<select style="width:100%;" name="field[<?php echo $i;?>][effect]">
+    			<?php 
+    			foreach( Mage::helper('gomage_slider')->effectToOptionHash() as $key => $name ):
+    			?>
+	    			<option <?php echo isset($data[$i]['effect']) && $data[$i]['effect'] == $key ? 'selected="selected"' : '';?> value="<?php echo $key; ?>"><?php echo $name; ?></option>
+    			<?php 
+    			endforeach;
+    			?>
+    		</select>
+    		</div>
+    	</td>
+    	<td><button onclick="removeMappingRow(this);return false;" class="button"><span><span><?php echo $this->__('Remove')?></span></span></button></td>
+    </tr>
+<?php endfor;?>

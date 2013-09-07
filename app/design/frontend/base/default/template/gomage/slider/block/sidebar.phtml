@@ -1,0 +1,31 @@
+<?php
+ /**
+ * GoMage Slider Extension
+ *
+ * @category     Extension
+ * @copyright    Copyright (c) 2010-2012 GoMage (http://www.gomage.com)
+ * @author       GoMage
+ * @license      http://www.gomage.com/license-agreement/  Single domain license
+ * @terms of use http://www.gomage.com/terms-of-use
+ * @version      Release: 1.0
+ */
+?>
+<?php 
+	$item = $this->getItem();
+	$slides = $this->getSlides(); 
+	$_slide = array_shift(array_values($slides[$item->getId()]));
+?>
+
+<?php 
+if ( isset( $slides[$item->getId()] ) ):
+	$i = 0;
+	foreach( $slides[$item->getId()] as $_order => $_item ):
+	?>
+		<div id="sidebar-item-order-<?php echo $_order; ?>" class="gomage-sidebar-item <?php echo ( $i == 0 ) ? 'active' : ''; ?>">
+			<a href="javascript: GomageSlider.returnNull();" id="slide-order-<?php echo $_order;?>" class="sidebar-link"><?php echo $_item->getSidebarContent(); ?></a>
+		</div>
+	<?php 
+	$i++;
+	endforeach;
+endif;
+?>
