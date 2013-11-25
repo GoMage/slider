@@ -12,8 +12,10 @@
 ?>
 <?php 
 	$item = $this->getItem();
-	$slides = $this->getSlides(); 
-	$_slide = array_shift(array_values($slides[$item->getId()]));
+	$slides = $this->getSlides();
+    $_slide = $slides[$item->getId()];
+    $_slide = array_values($_slide);
+    $_slide = array_shift($_slide);
 ?>
 
 <?php 

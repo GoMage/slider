@@ -13,7 +13,9 @@
 <?php 
 	$item = $this->getBlockItem();
 	$slides = $this->getBlockSlides(); 
-	$_slide = array_shift(array_values($slides[$item->getId()]));
+	$_slide = $slides[$item->getId()];
+    $_slide = array_values($_slide);
+    $_slide = array_shift($_slide);
 	$_helper = Mage::helper('gomage_slider');
 ?>
 <?php 

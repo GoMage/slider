@@ -66,8 +66,10 @@ class GoMage_Slider_Model_Item extends Mage_Core_Model_Abstract
     
 	public function containerCssStyle()
     {
-    	if ( $this->getShowNavigationBar() == GoMage_Slider_Model_Adminhtml_System_Config_Source_Navigation_Show::SIDEBAR )
+
+        if ( $this->getShowNavigationBar() == GoMage_Slider_Model_Adminhtml_System_Config_Source_Navigation_Show::SIDEBAR )
     	{
+            $clear = '';
 	    	if ( $this->getNavigationBarAlignment() != GoMage_Slider_Model_Adminhtml_System_Config_Source_Navigation_Alignment::TOP
 		    			&&
 	    		 $this->getNavigationBarAlignment() != GoMage_Slider_Model_Adminhtml_System_Config_Source_Navigation_Alignment::BOTTOM )
