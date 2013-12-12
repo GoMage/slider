@@ -14,47 +14,47 @@
 	
 	<?php foreach ($this->getItems() as $item): ?>
 
-		#gomage-slider-block-<?php echo $item->getId() ?>{	
+		.gomage-slider-block-<?php echo $item->getId() ?>{
 			<?php 
 				echo $item->blockCss();
 			?>
   	   }
 
-	   #gomage-slider-block-<?php echo $item->getId() ?> .gomage-content-item{	
+	   .gomage-slider-block-<?php echo $item->getId() ?> .gomage-content-item{
 			<?php echo $item->imageCss();?>
 			overflow: hidden;
   	   }
 
-	   #gomage-slider-block-<?php echo $item->getId() ?> .gomage-content{	
+	   .gomage-slider-block-<?php echo $item->getId() ?> .gomage-content{
 			<?php echo $item->contentCss();?>
   	   }
 
-	   #gomage-slider-block-<?php echo $item->getId() ?> .gomage-content-item .gomage-content-image{	
+	   .gomage-slider-block-<?php echo $item->getId() ?> .gomage-content-item .gomage-content-image{
 			<?php echo $item->imageCss();?>
 			position: absolute;
   	   }
 
-	   #gomage-slider-block-<?php echo $item->getId() ?> .gomage-content-item .gomage-content-image img{	
+	   .gomage-slider-block-<?php echo $item->getId() ?> .gomage-content-item .gomage-content-image img{
 			<?php echo $item->imageCss();?>
   	   }
 
-     #gomage-slider-block-<?php echo $item->getId() ?> .gomage-content{	
+     .gomage-slider-block-<?php echo $item->getId() ?> .gomage-content{
 			float: left;
   	   }
 
-	   #gomage-slider-block-<?php echo $item->getId() ?> .gomage-slider-container{	
+	   .gomage-slider-block-<?php echo $item->getId() ?> .gomage-slider-container{
 			<?php 
 				echo $item->containerCssStyle();
 			?>
   	   }
 
-	   #gomage-slider-block-<?php echo $item->getId() ?> .gomage-slider-sidebar{	
+	  .gomage-slider-block-<?php echo $item->getId() ?> .gomage-slider-sidebar{
 			<?php 
 				echo $item->sideBarCss();
 			?>
   	   }
 
-	   #gomage-slider-block-<?php echo $item->getId() ?> .gomage-sidebar-item{	
+	  .gomage-slider-block-<?php echo $item->getId() ?> .gomage-sidebar-item{
 			<?php 
 				echo $item->sideBarItemCss();
 			?>
@@ -64,12 +64,12 @@
     -------------------------------------------------- */
     
       /* Left Arrow */
-      #gomage-slider-block-<?php echo $item->getId() ?> .gomage-arrow-left span{
+    .gomage-slider-block-<?php echo $item->getId() ?> .gomage-arrow-left span{
         border-right-color: <?php echo $item->getArrowColor(); ?>;
         }
         
       /* Right Arrow */
-      #gomage-slider-block-<?php echo $item->getId() ?> .gomage-arrow-right span{
+     .gomage-slider-block-<?php echo $item->getId() ?> .gomage-arrow-right span{
         border-left-color: <?php echo $item->getArrowColor(); ?>;
         }
         
@@ -77,12 +77,12 @@
     -------------------------------------------------- */
     
       /* Left Arrow */
-      #gomage-slider-block-<?php echo $item->getId() ?> .gomage-arrow-left:hover span{
+     .gomage-slider-block-<?php echo $item->getId() ?> .gomage-arrow-left:hover span{
         border-right-color: <?php echo $item->getMouseOverColor(); ?>;
         }
         
       /* Right Arrow */
-      #gomage-slider-block-<?php echo $item->getId() ?> .gomage-arrow-right:hover span{
+     .gomage-slider-block-<?php echo $item->getId() ?> .gomage-arrow-right:hover span{
         border-left-color: <?php echo $item->getMouseOverColor(); ?>;
         } 
 
@@ -92,7 +92,7 @@
 	?>
       /* Mouse Over Background Color
       -------------------------------------------------- */
-      #gomage-slider-block-<?php echo $item->getId() ?> .gps-arrow:hover{
+     .gomage-slider-block-<?php echo $item->getId() ?> .gps-arrow:hover{
         background: <?php echo $item->getMouseOverBackground(); ?>;
         }
 	<?php 

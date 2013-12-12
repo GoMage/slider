@@ -23,28 +23,31 @@ class GoMage_Slider_Block_Block extends GoMage_Slider_Block_Abstract{
         } 
     }
     
-    public function getContentHtml($item)
+    public function getContentHtml($item, $sliderCode)
     {
     	return $this->getLayout()->createBlock('gomage_slider/block')
 								 ->setData('block_item', $item)
+                                 ->setData('slider_code', $sliderCode)
 								 ->setData('start_order_id', $this->getStartOrderId($this->getBlockCode()))
 								 ->setData('block_slides', $this->getSlidesArray($this->getBlockCode()))
 	            				 ->setTemplate('gomage/slider/block/content.phtml')->toHtml();
     }
     
-    public function getSidebarHtml($item)
+    public function getSidebarHtml($item, $sliderCode)
     {
     	return $this->getLayout()->createBlock('core/template')
 								->setData('item', $item)
+                                ->setData('sliderCode', $sliderCode)
 								->setData('slides', $this->getSlidesArray($this->getBlockCode()))
 	            				->setTemplate('gomage/slider/block/sidebar.phtml')->toHtml();
     }
     
-    public function getNavigationbarHtml($item, $slides)
+    public function getNavigationbarHtml($item, $slides, $sliderCode)
     {
     	return $this->getLayout()->createBlock('core/template')
 								->setData('item', $item)
 								->setData('slides', $slides)
+                                ->setData('slider_code', $sliderCode)
 	            				->setTemplate('gomage/slider/block/navigation-bar.phtml')->toHtml();
     }
     

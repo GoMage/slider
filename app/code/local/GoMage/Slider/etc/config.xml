@@ -66,6 +66,14 @@
                     </slider_collect_totals_after>
                 </observers>
             </admin_system_config_changed_section_gomage_activation>
+            <controller_action_predispatch>
+                <observers>
+                    <gomage_slider_notify>
+                        <class>gomage_slider/observer_notify</class>
+                        <method>notify</method>
+                    </gomage_slider_notify>
+                </observers>
+            </controller_action_predispatch>
         </events> 
         <menu>
 			<cms>
@@ -185,6 +193,6 @@
         <helpers>
 			<gomage_slider><class>GoMage_Slider_Helper</class></gomage_slider>
 		</helpers>
-	</global>	
-	 
+	</global>
+
 </config>

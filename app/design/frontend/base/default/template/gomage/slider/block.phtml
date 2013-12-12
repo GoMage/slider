@@ -13,11 +13,11 @@
 <?php
 $item = $this->getItems($this->getBlockCode());
 $_helper = Mage::helper('gomage_slider');
-
+$sliderCode = $_helper->generateCode();
 if ( $item && $item->getSlides() && $item->getSlides() != '[]' ):
 	?>
-		<div id="gomage-slider-block-<?php echo $item->getId(); ?>" 
-			<?php echo ( $item->getShowArrows() == GoMage_Slider_Model_Adminhtml_System_Config_Source_Navigation_Arrows::MOUSE ) ? 'class="gps-arrows-hover"' : '';?>>
+		<div id="gomage-slider-block-<?php echo $sliderCode; ?>-<?php echo $item->getId(); ?>"
+			<?php echo ( $item->getShowArrows() == GoMage_Slider_Model_Adminhtml_System_Config_Source_Navigation_Arrows::MOUSE ) ? 'class="gps-arrows-hover gomage-slider-block-'.$item->getId().'"' : 'class="gomage-slider-block-'.$item->getId().'"';?>>
 			<?php
 			if ( $item->getNavigationBarAlignment() == GoMage_Slider_Model_Adminhtml_System_Config_Source_Navigation_Alignment::TOP
 					&&
@@ -26,7 +26,7 @@ if ( $item && $item->getSlides() && $item->getSlides() != '[]' ):
 				  $item->getShowNavigationBar() == GoMage_Slider_Model_Adminhtml_System_Config_Source_Navigation_Show::NO) ):
 			?>
 				<div class="gomage-slider-sidebar gomage-slider-sidebar-<?php echo GoMage_Slider_Model_Adminhtml_System_Config_Source_Navigation_Alignment::getClassName($item->getNavigationBarAlignment()); ?>" <?php echo ($item->getShowNavigationBar() == GoMage_Slider_Model_Adminhtml_System_Config_Source_Navigation_Show::NO) ? 'style="display: none;"':''; ?>>
-					<?php echo $this->getSidebarHtml($item);  ?>
+					<?php echo $this->getSidebarHtml($item,$sliderCode);  ?>
 				</div>
 			<?php 
 			endif;
@@ -34,7 +34,7 @@ if ( $item && $item->getSlides() && $item->getSlides() != '[]' ):
 			<div class="gomage-slider-container">
 				<div class="gomage-slider-content">
 				
-					<?php echo $this->getContentHtml($item); ?>
+					<?php echo $this->getContentHtml($item, $sliderCode); ?>
 				</div>			
 			</div>
 			<?php
@@ -46,7 +46,7 @@ if ( $item && $item->getSlides() && $item->getSlides() != '[]' ):
 				  
 			?>
 				<div class="gomage-slider-sidebar gomage-slider-sidebar-<?php echo GoMage_Slider_Model_Adminhtml_System_Config_Source_Navigation_Alignment::getClassName($item->getNavigationBarAlignment()); ?>" <?php echo ($item->getShowNavigationBar() == GoMage_Slider_Model_Adminhtml_System_Config_Source_Navigation_Show::NO) ? 'style="display: none;"':''; ?>>
-					<?php echo $this->getSidebarHtml($item);  ?>
+					<?php echo $this->getSidebarHtml($item, $sliderCode);  ?>
 				</div>
 			<?php 
 			endif;
@@ -55,11 +55,19 @@ if ( $item && $item->getSlides() && $item->getSlides() != '[]' ):
 
 <script type="text/javascript">
 //<![CDATA[
-	var GomageSlider = new GomageSliderClass({gomage_slider_config:<?php echo $this->getConfig(); ?>, 
+	var GomageSlider_<?php echo $sliderCode; ?> = new GomageSliderClass({gomage_slider_config:<?php echo $this->getConfig(); ?>,
 											   gomage_slider_slides:<?php echo $this->getSlidesJson($this->getBlockId($this->getBlockCode())); ?>,
 											   block_id: <?php echo $this->getBlockId($this->getBlockCode()); ?>,
 											   start_order_id: <?php echo $this->getStartOrderId($this->getBlockCode()); ?>,
-											   slides_count: <?php echo $this->getSlidesCount(); ?>});
+											   slides_count: <?php echo $this->getSlidesCount(); ?>,
+                                               slider_code:  '<?php echo $sliderCode; ?>'    });
+
+function getGoMageSlederByCode(code){
+    return eval(code);
+}
+function get navigation_right(code){
+    return eval(code);
+}
 //]]>
 </script>
 <?php 
