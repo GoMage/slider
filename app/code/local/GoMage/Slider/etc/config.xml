@@ -142,7 +142,6 @@
 	        </resources>
 	    </acl>
 	</adminhtml>
-
 	<global>
 	   
 		<models>

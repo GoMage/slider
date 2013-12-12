@@ -10,7 +10,6 @@
  * @version      Release: 1.1
  * @since        Class available since Release 1.1
  */
-
 class GoMage_Slider_Model_Observer_Notify
 {
 

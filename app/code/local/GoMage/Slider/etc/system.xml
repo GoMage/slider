@@ -60,6 +60,7 @@
 				</slider>
 			</groups>
 		</gomage_activation>
+
         <gomage_notification>
             <label>Notifications</label>
             <tab>gomage</tab>
