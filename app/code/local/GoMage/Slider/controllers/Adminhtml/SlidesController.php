@@ -7,7 +7,7 @@
  * @author       GoMage
  * @license      http://www.gomage.com/license-agreement/  Single domain license
  * @terms of use http://www.gomage.com/terms-of-use
- * @version      Release: 1.0
+ * @version      Release: 1.1
  */
 
 class GoMage_Slider_Adminhtml_SlidesController extends Mage_Adminhtml_Controller_Action{
@@ -79,7 +79,6 @@ class GoMage_Slider_Adminhtml_SlidesController extends Mage_Adminhtml_Controller
 	
 	public function _filterPostData($data)
     {
-        
         if ($data['start_date'])
             $data = $this->_filterDates($data, array('start_date'));
         else
@@ -90,19 +89,23 @@ class GoMage_Slider_Adminhtml_SlidesController extends Mage_Adminhtml_Controller
             $data['end_date'] = null;         
         
         $data['store_ids'] = (isset($data['store_ids']) && is_array($data['store_ids']) ? implode(',', $data['store_ids']) : '');
-        
+
         if($filename = $this->_saveImage('image')){
 			$data['image'] = $filename;
+            if(isset($data['image_width']) && isset($data['image_height'])){
 			$this->adsResizeImage($data['image'], $data['image_width'], $data['image_height']);
+            }
 		}elseif(isset($data['image']['delete']) && intval($data['image']['delete'])){
 			$data['image'] = '';
 		}elseif(isset($data['image']['value'])){
-		    $data['image'] = $data['image']['value'];
-		    $this->adsResizeImage($data['image'], $data['image_width'], $data['image_height']);
+		     $data['image'] = $data['image']['value'];
+            if(isset($data['image_width']) && isset($data['image_height'])){
+                $this->adsResizeImage($data['image'], $data['image_width'], $data['image_height']);
+            }
 		} 
 		
         return $data;
-    } 
+    }
     
 	protected function _saveImage($name){
 		
