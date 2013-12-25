@@ -79,18 +79,21 @@ class GoMage_Slider_Block_Adminhtml_Items_Edit_Tab_Navigation extends Mage_Admin
             'name'      => 'arrow_color',
             'label'     => $this->__('Arrows Color'),
             'title'     => $this->__('Arrows Color'),
+            'class' => 'color',
         ));
         
         $fieldset->addField('mouse_over_color', 'text', array(
             'name'      => 'mouse_over_color',
             'label'     => $this->__('Mouse Over Arrow Color'),
             'title'     => $this->__('Mouse Over Arrow Color'),
+            'class' => 'color',
         ));
         
         $fieldset->addField('mouse_over_background', 'text', array(
             'name'      => 'mouse_over_background',
             'label'     => $this->__('Mouse Over Background Color'),
             'title'     => $this->__('Mouse Over Background Color'),
+            'class' => 'color',
         ));
         
         
