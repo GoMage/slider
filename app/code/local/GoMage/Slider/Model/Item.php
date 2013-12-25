@@ -167,7 +167,7 @@ class GoMage_Slider_Model_Item extends Mage_Core_Model_Abstract
     			&&
     		 $this->getNavigationBarAlignment() != GoMage_Slider_Model_Adminhtml_System_Config_Source_Navigation_Alignment::BOTTOM )
         {
-    		$css = 'width: ' . intval($this->getSidebarWidth()) . 'px;'; 	 	
+    		$css = 'width: ' . intval($this->getSidebarWidth()) . 'px;  height: ' . $this->getSidebarHeight() . 'px; ';
     	}
     	else 
     	{
@@ -188,7 +188,7 @@ class GoMage_Slider_Model_Item extends Mage_Core_Model_Abstract
     			$css .= 'clear: both;';
     		break;
     	}
-    	
+
     	return $css;
     }
     

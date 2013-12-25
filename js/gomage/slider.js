@@ -250,21 +250,21 @@ GomageSliderClass = Class.create({
 
 		if ( this.gomage_slider_config[this.block_id].show_navigation_bar == 2 ) // 2 - Sidebar
 		{
-			$$('div.gomage-sidebar-item').each(function(e) {
+			$$('div.gomage-sidebar-item-' +this.slider_code).each(function(e) {
 		        e.removeClassName('active');
 		    });
 		}
 		else
 		{
-			$$('li..gs-'+this.slider_code).each(function(e) {
+			$$('li.gs-'+this.slider_code).each(function(e) {
 		        e.removeClassName('active');
 		    });
 		}
 		
 		
-		if ( $('sidebar-item-order-' + clean_id) )
+		if ( $('sidebar-item-order-' +this.slider_code+'-' + clean_id) )
 		{
-			$('sidebar-item-order-' + clean_id).addClassName('active');
+			$('sidebar-item-order-' +this.slider_code+'-' + clean_id).addClassName('active');
 		}
 		
 		if ( $('slide-order-'+this.slider_code+'-' + clean_id) )

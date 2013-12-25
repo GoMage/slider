@@ -8,7 +8,6 @@
  * @license      http://www.gomage.com/license-agreement/  Single domain license
  * @terms of use http://www.gomage.com/terms-of-use
  * @version      Release: 1.1
-  * 
  */
 
 class GoMage_Slider_Block_Adminhtml_Items_Edit_Tab_Navigation extends Mage_Adminhtml_Block_Widget_Form
@@ -29,15 +28,16 @@ class GoMage_Slider_Block_Adminhtml_Items_Edit_Tab_Navigation extends Mage_Admin
         $fieldset = $form->addFieldset('main_fieldset', array('legend' => $this->__('Navigation Bar')));
         
         $this->_setFieldset(array(), $fieldset);
-        
-        $fieldset->addField('show_navigation_bar', 'select',
+
+        $show_navigation_bar = $fieldset->addField('show_navigation_bar', 'select',
             array(
                 'name'   => 'show_navigation_bar',
                 'label'  => $this->__('Show Navigation Bar'),                
                 'values' => Mage::getModel('gomage_slider/adminhtml_system_config_source_navigation_show')->toOptionArray(), 
             )
         );
-        
+        $show_navigation_bar->setOnchange('SliderAdmin.setNavigationBar(this.value)');
+
         $fieldset->addField('navigation_bar_alignment', 'select',
             array(
                 'name'   => 'navigation_bar_alignment',

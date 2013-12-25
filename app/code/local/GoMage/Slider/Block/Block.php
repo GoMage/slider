@@ -37,7 +37,7 @@ class GoMage_Slider_Block_Block extends GoMage_Slider_Block_Abstract{
     {
     	return $this->getLayout()->createBlock('core/template')
 								->setData('item', $item)
-                                ->setData('sliderCode', $sliderCode)
+                                ->setData('slider_code', $sliderCode)
 								->setData('slides', $this->getSlidesArray($this->getBlockCode()))
 	            				->setTemplate('gomage/slider/block/sidebar.phtml')->toHtml();
     }

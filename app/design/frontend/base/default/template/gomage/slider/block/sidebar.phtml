@@ -18,13 +18,13 @@
     $_slide = array_shift($_slide);
 ?>
 
-<?php 
+<?php
 if ( isset( $slides[$item->getId()] ) ):
 	$i = 0;
 	foreach( $slides[$item->getId()] as $_order => $_item ):
 	?>
-		<div id="sidebar-item-order-<?php echo $_order; ?>" class="gomage-sidebar-item <?php echo ( $i == 0 ) ? 'active' : ''; ?>">
-			<a href="javascript: eval('GomageSlider_<?php echo $this->slider_code ;?>').returnNull();" id="slide-order-<?php echo $_order;?>" class="sidebar-link"><?php echo $_item->getSidebarContent(); ?></a>
+		<div id="sidebar-item-order-<?php echo $this->slider_code ;?>-<?php echo $_order; ?>" class="gomage-sidebar-item-<?php echo $this->slider_code ;?> <?php echo ( $i == 0 ) ? 'active' : ''; ?>">
+			<a href="javascript: eval('GomageSlider_<?php echo $this->slider_code ;?>').returnNull();" id="slide-order-<?php echo $this->slider_code ;?>-<?php echo $_order;?>" class="sidebar-link"><?php echo $_item->getSidebarContent(); ?></a>
 		</div>
 	<?php 
 	$i++;
