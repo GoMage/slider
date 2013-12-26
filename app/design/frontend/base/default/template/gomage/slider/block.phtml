@@ -14,6 +14,7 @@
 $item = $this->getItems($this->getBlockCode());
 $_helper = Mage::helper('gomage_slider');
 $sliderCode = $_helper->generateCode();
+
 if ( $item && $item->getSlides() && $item->getSlides() != '[]' ):
 	?>
 		<div id="gomage-slider-block-<?php echo $sliderCode; ?>-<?php echo $item->getId(); ?>"
@@ -60,7 +61,9 @@ if ( $item && $item->getSlides() && $item->getSlides() != '[]' ):
 											   block_id: <?php echo $this->getBlockId($this->getBlockCode()); ?>,
 											   start_order_id: <?php echo $this->getStartOrderId($this->getBlockCode()); ?>,
 											   slides_count: <?php echo $this->getSlidesCount(); ?>,
-                                               slider_code:  '<?php echo $sliderCode; ?>'    });
+                                               slider_code:  '<?php echo $sliderCode; ?>',
+                                               auto_start: <?php echo  $item->getEnableAutostart();?>
+    });
 
 function getGoMageSlederByCode(code){
     return eval(code);

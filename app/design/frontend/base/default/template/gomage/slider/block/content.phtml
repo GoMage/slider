@@ -70,8 +70,8 @@
       </div>
     <?php 
     endif;
-    
-    if ( $item->getEnableAutostart() == GoMage_Slider_Model_Adminhtml_System_Config_Source_Enabledisable::YES && $item->getShowPauseButton() == GoMage_Slider_Model_Adminhtml_System_Config_Source_Enabledisable::YES ):
+
+    if ($item->getShowPauseButton() == GoMage_Slider_Model_Adminhtml_System_Config_Source_Enabledisable::YES ):
 	?>
 		<div class="gomage-play-pause gomage-pause gomage-play-pause-<?php echo $this->slider_code ;?>">
 			<a class="play-pause-<?php echo $this->slider_code ;?>" href="javascript: eval('GomageSlider_<?php echo $this->slider_code ;?>').returnNull();" title="<?php echo $this->__('Pause') ?>"><span></span><span></span></a>

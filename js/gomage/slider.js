@@ -19,6 +19,7 @@ GomageSliderClass = Class.create({
 	timeout: null,
 	autoplay_state: 'pause',
     slider_code: null,
+    auto_start: null,
 	initialize:function(data){
 
 		if(data && (typeof data.gomage_slider_config != 'undefined')){
@@ -31,6 +32,9 @@ GomageSliderClass = Class.create({
 
         if(data && (typeof data.slider_code != 'undefined')){
             this.slider_code = data.slider_code;
+        }
+        if(data && (typeof data.auto_start != 'undefined')){
+            this.auto_start = data.auto_start;
         }
 
 		if(data && (typeof data.block_id != 'undefined')){
@@ -66,9 +70,9 @@ GomageSliderClass = Class.create({
 	            if ( elem )
 	            {
 	            	var clean_id = self.cleanId(elem.id, 25);
-                    if(wipeBlock == null){
+                  if(wipeBlock == null){
                     self.changeSlide(clean_id);
-                    }
+                  }
 	            }
 	        });
 		}
@@ -81,9 +85,9 @@ GomageSliderClass = Class.create({
                 if ( elem )
 	            {
 	            	var clean_id = self.cleanId(elem.id, 25);
-                    if(wipeBlock == null){
+                  if(wipeBlock == null){
                     self.changeSlide(clean_id);
-                    }
+                   }
 	            }
 	        });
 		}
@@ -93,9 +97,9 @@ GomageSliderClass = Class.create({
             var wipeBlock = $('gomage-slider-block-'+ slider_code + '-' + block_id).down('div.wipe-'+slider_code);
             if ( elem )
             {
-                if(wipeBlock == null){
+             if(wipeBlock == null){
                 self.changeSlide(self.nextId());
-                  }
+                }
             }
         });
 
@@ -105,9 +109,9 @@ GomageSliderClass = Class.create({
 
             if ( elem )
             {
-                if(wipeBlock == null){
+               if(wipeBlock == null){
                 self.changeSlide(self.prevId());
-                }
+              }
             }
         });
 		
@@ -157,14 +161,16 @@ GomageSliderClass = Class.create({
 	},
 
 	autostart:function(change_slide){
+
 		var pause_button = $('gomage-slider-block-'+ this.slider_code + '-' + this.block_id).down('div.gomage-play-pause-'+this.slider_code);
 		var pause_button_link = $('gomage-slider-block-'+ this.slider_code + '-' + this.block_id).down('div.gomage-play-pause-'+this.slider_code+' a.play-pause-'+this.slider_code);
 
+
 		if( change_slide && this.autoplay_state == 'pause' )
-		{
-			return;
-		}
-		
+            {
+                return;
+            }
+
 		var delay_time = this.gomage_slider_config[this.block_id].delay_time - 0;
 		if ( delay_time == 0 )
 		{
