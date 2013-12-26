@@ -54,7 +54,7 @@
 			?>
   	   }
 
-	 /* .gomage-slider-block-<?php //echo $item->getId() ?> .gomage-sidebar-item{
+	 .gomage-slider-block-<?php echo $item->getId() ?> .gomage-sidebar-item{
 			<?php 
 			//	echo $item->sideBarItemCss();
 			?>
@@ -65,12 +65,12 @@
     
       /* Left Arrow */
     .gomage-slider-block-<?php echo $item->getId() ?> .gomage-arrow-left span{
-        border-right-color: <?php echo $item->getArrowColor(); ?>;
+        border-right-color: #<?php echo $item->getArrowColor(); ?>;
         }
         
       /* Right Arrow */
      .gomage-slider-block-<?php echo $item->getId() ?> .gomage-arrow-right span{
-        border-left-color: <?php echo $item->getArrowColor(); ?>;
+        border-left-color: #<?php echo $item->getArrowColor(); ?>;
         }
         
     /* Mouse Over Arrow Color
@@ -78,12 +78,12 @@
     
       /* Left Arrow */
      .gomage-slider-block-<?php echo $item->getId() ?> .gomage-arrow-left:hover span{
-        border-right-color: <?php echo $item->getMouseOverColor(); ?>;
+        border-right-color: #<?php echo $item->getMouseOverColor(); ?>;
         }
         
       /* Right Arrow */
      .gomage-slider-block-<?php echo $item->getId() ?> .gomage-arrow-right:hover span{
-        border-left-color: <?php echo $item->getMouseOverColor(); ?>;
+        border-left-color: #<?php echo $item->getMouseOverColor(); ?>;
         } 
 
     
@@ -93,7 +93,7 @@
       /* Mouse Over Background Color
       -------------------------------------------------- */
      .gomage-slider-block-<?php echo $item->getId() ?> .gps-arrow:hover{
-        background: <?php echo $item->getMouseOverBackground(); ?>;
+        background: #<?php echo $item->getMouseOverBackground(); ?>;
         }
 	<?php 
 	endif;
