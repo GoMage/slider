@@ -49,6 +49,10 @@ GomageSliderClass = Class.create({
 			this.start_order_id = data.start_order_id;
 			this.order_id = data.start_order_id;
 		}
+       if(this.auto_start == 2){
+           this.pause();
+       }
+
 
 		if ( this.gomage_slider_config 
 				&& 
@@ -194,7 +198,7 @@ GomageSliderClass = Class.create({
 	pause:function(no_button_change){
 		
 		clearInterval(this.interval_id);
-		
+
 		var pause_button = $('gomage-slider-block-'+ this.slider_code + '-' + this.block_id).down('div.gomage-play-pause-'+this.slider_code);
 		var pause_button_link = $('gomage-slider-block-'+ this.slider_code + '-' + this.block_id).down('div.gomage-play-pause-'+this.slider_code+' a');
 
