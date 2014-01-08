@@ -17,6 +17,8 @@ Effect.Wipe = function(element) {
 	var wipeCenter = parseInt(wipeWidth/2)
 	var wipeMiddle = parseInt(wipeHeight/2)
     var slider_code =arguments[1].slider_code;
+
+
 	switch(wipeMode) {
 	
 	case 'vSplit':
