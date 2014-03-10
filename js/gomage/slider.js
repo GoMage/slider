@@ -113,7 +113,6 @@ GomageSliderClass = Class.create({
             }
         });
 
-
         $('gomage-slider-block-'+slider_code+'-'+block_id).observe('click', function(event){
             var elem = Event.findElement(event, 'div.gomage-play-pause-'+slider_code);
             if ( elem )
