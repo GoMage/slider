@@ -232,6 +232,7 @@ Effect.Wipe = function(element) {
 			
 			$(element).insert(new Element("div", { id: "wipeBar-"+slider_code+x, class: "wipe-"+slider_code, style:'position:absolute;left:'+vBars*x+'px;top:-'+barLeft+'px;z-index:10;overflow:hidden;height:0px;width:'+barWidth+'px;background-image:url('+img+');background-size: '+wipeWidth+'px '+wipeHeight+'px;  background-position:-'+vBars*x+'px 0px;' }))
 		}
+        
 		//return;
 		for(var x=0;x<steps-1;x++) {
 			new Effect.Morph('wipeBar-'+slider_code+x,{
