@@ -25,8 +25,8 @@ Effect.Wipe = function(element) {
 		$(element).insert(new Element("div", { id: "wipeLeft-"+slider_code, class: "wipe-"+slider_code,  style:'display:none;position:absolute;top:0px;left:0px;z-index:10;overflow:hidden;width:'+wipeCenter+'px;height:'+wipeHeight+'px;background-image:url('+oldImg+'); background-size: '+wipeWidth+'px '+wipeHeight+'px;' }))
 		$(element).insert(new Element("div", { id: "wipeRight-"+slider_code, class: "wipe-"+slider_code, style:'display:none;position:absolute;top:0px;left:'+wipeCenter+'px;z-index:10;overflow:hidden;width:'+wipeCenter+'px;height:'+wipeHeight+'px;background-image:url('+oldImg+');background-size: '+wipeWidth+'px '+wipeHeight+'px;  background-position:-'+wipeCenter+'px 0px;' }))
 		return new Effect.Parallel([
-			new Effect.Morph('wipeLeft-'+slider_code,{duration:wipeDuration,style:'width:0px'}),
-			new Effect.Morph('wipeRight-'+slider_code,{duration:wipeDuration,style:'left:'+wipeWidth+'px;width:0px;background-position:-'+wipeWidth+'px 0px'})], {
+			new Effect.Morph('wipeLeft-'+slider_code,{queue: { scope: 'wipe-'+slider_code },duration:wipeDuration,style:'width:0px'}),
+			new Effect.Morph('wipeRight-'+slider_code,{queue: { scope: 'wipe-'+slider_code},duration:wipeDuration,style:'left:'+wipeWidth+'px;width:0px;background-position:-'+wipeWidth+'px 0px'})], {
 				beforeStart: function() {
 					Element.show('wipeLeft-'+slider_code)
 					Element.show('wipeRight-'+slider_code)
@@ -49,8 +49,8 @@ Effect.Wipe = function(element) {
 		$(element).insert(new Element("div", { id: "wipeLeft-"+slider_code, class: "wipe-"+slider_code, style:'display:none;position:absolute;top:0px;left:0px;z-index:10;overflow:hidden;width:'+wipeWidth+'px;height:'+wipeMiddle+'px;background-image:url('+oldImg+'); background-size: '+wipeWidth+'px '+wipeHeight+'px; ' }))
 		$(element).insert(new Element("div", { id: "wipeRight-"+slider_code, class: "wipe-"+slider_code, style:'display:none;position:absolute;top:'+wipeMiddle+'px;left:0px;z-index:10;overflow:hidden;width:'+wipeWidth+'px;height:'+wipeMiddle+'px;background-image:url('+oldImg+'); background-size: '+wipeWidth+'px '+wipeHeight+'px;  background-position:0px -'+wipeMiddle+'px;' }))
 		return new Effect.Parallel([
-			new Effect.Morph('wipeLeft-'+slider_code,{duration:wipeDuration,style:'height:0px'}),
-			new Effect.Morph('wipeRight-'+slider_code,{duration:wipeDuration,style:'top:'+wipeHeight+'px;height:0px;'})], {
+			new Effect.Morph('wipeLeft-'+slider_code,{queue: {scope: 'wipe-'+slider_code},duration:wipeDuration,style:'height:0px'}),
+			new Effect.Morph('wipeRight-'+slider_code,{queue: {scope: 'wipe-'+slider_code },duration:wipeDuration,style:'top:'+wipeHeight+'px;height:0px;'})], {
 				afterUpdate: function() {
 					//work-around to fix fact that effect.morph does not handle background position properly
 					if ( $('wipeRight-'+slider_code) )
@@ -79,7 +79,8 @@ Effect.Wipe = function(element) {
 	case 'toRight':
 		$(element).insert(new Element("div", { id: "wipeRight-"+slider_code, class: "wipe-"+slider_code, style:'display:none;position:absolute;top:0px;left:0px;z-index:10;overflow:hidden;width:0px;height:'+wipeHeight+'px;background-image:url('+img+');background-size: '+wipeWidth+'px '+wipeHeight+'px;  background-position:0px 0px;' }))
 		return new Effect.Morph('wipeRight-'+slider_code,{
-			duration:wipeDuration,
+                queue: {scope: 'wipe-'+slider_code},
+                duration:wipeDuration,
 			style:'left:0px;width:'+wipeWidth+'px', 
 			beforeStart: function() {
 				Element.show('wipeRight-'+slider_code)
@@ -96,7 +97,8 @@ Effect.Wipe = function(element) {
 	case 'toLeft':
 		$(element).insert(new Element("div", { id: "wipeRight-"+slider_code, class: "wipe-"+slider_code, style:'display:none;position:absolute;top:0px;left:'+wipeWidth+'px;z-index:10;overflow:hidden;width:0px;height:'+wipeHeight+'px;background-image:url('+img+'); background-size: '+wipeWidth+'px '+wipeHeight+'px; background-position:-'+wipeWidth+'px 0px;' }))
 		return new Effect.Morph('wipeRight-'+slider_code,{
-			duration:wipeDuration,
+                queue: {scope: 'wipe-'+slider_code },
+                duration:wipeDuration,
 			style:'left:0px;width:'+wipeWidth+'px;background-position:0px 0px', 
 			beforeStart: function() {
 				Element.show('wipeRight-'+slider_code)
@@ -113,7 +115,8 @@ Effect.Wipe = function(element) {
 	case 'toTop':
 		$(element).insert(new Element("div", { id: "wipeRight-"+slider_code, class: "wipe-"+slider_code, style:'display:none;position:absolute;top:'+wipeHeight+'px;left:0px;z-index:10;overflow:hidden;width:'+wipeWidth+'px;height:0px;background-image:url('+img+');background-size: '+wipeWidth+'px '+wipeHeight+'px;  background-position:0px '+wipeHeight+'px;' }))
 		return new Effect.Morph('wipeRight-'+slider_code,{
-			duration:wipeDuration,
+                queue: {scope: 'wipe-'+slider_code},
+                duration:wipeDuration,
 			style:'top:0px;height:'+wipeHeight+'px;', 
 			afterUpdate: function() {
 					//work-around to fix fact that effect.morph does not handle background position properly
@@ -134,7 +137,8 @@ Effect.Wipe = function(element) {
 	case 'toBottom':
 		$(element).insert(new Element("div", { id: "wipeRight-"+slider_code, class: "wipe-"+slider_code, style:'display:none;position:absolute;top:0px;left:0px;z-index:10;overflow:hidden;width:'+wipeWidth+'px;height:0px;background-image:url('+img+'); background-size: '+wipeWidth+'px '+wipeHeight+'px;  background-position:0px 0px;' }))
 		return new Effect.Morph('wipeRight-'+slider_code,{
-			duration:wipeDuration,
+                queue: {scope: 'wipe-'+slider_code },
+                duration:wipeDuration,
 			style:'top:0px;height:'+wipeHeight+'px;background-position:0px 0px', 
 			beforeStart: function() {
 				Element.show('wipeRight-'+slider_code)
@@ -163,9 +167,9 @@ Effect.Wipe = function(element) {
 		}
 		//return;
 		for(var x=0;x<steps-1;x++) {
-			new Effect.Morph('wipeBar-'+slider_code+x,{queue: { scope: 'wipe' },style:'left:0px;width:'+wipeWidth+'px;background-position:0px 0px'})
+			new Effect.Morph('wipeBar-'+slider_code+x,{queue: {scope: 'wipe-'+slider_code }, style:'left:0px;width:'+wipeWidth+'px;background-position:0px 0px'})
 		}
-		new Effect.Morph('wipeBar-'+slider_code+(steps-1),{queue: { scope: 'wipe' },style:'left:0px;width:'+wipeWidth+'px;background-position:0px 0px',
+		new Effect.Morph('wipeBar-'+slider_code+(steps-1),{queue: {scope: 'wipe-'+slider_code }, style:'left:0px;width:'+wipeWidth+'px;background-position:0px 0px',
 			afterFinish:function(){
 				$(element).firstChild.src=img
 				for(var x=0;x<steps;x++) {
@@ -192,12 +196,14 @@ Effect.Wipe = function(element) {
 		//return;
 		for(var x=0;x<steps-1;x++) {
 			new Effect.Morph('wipeBar-'+slider_code+x,{
-				duration:wipeDuration,
+                queue: {scope: 'wipe-'+slider_code},
+                duration:wipeDuration,
 				style:'left:0px;width:'+wipeWidth+'px;background-position:0px '+wipeWidth+'px'})
 		}
 		
 		new Effect.Morph('wipeBar-'+slider_code+(steps-1),{
-			duration:wipeDuration,
+            queue: {scope: 'wipe-'+slider_code},
+            duration:wipeDuration,
 			style:'left:0px;width:'+wipeWidth+'px;background-position:0px '+wipeWidth+'px',
 			afterFinish:function(){
 				$(element).firstChild.src=img
@@ -229,6 +235,7 @@ Effect.Wipe = function(element) {
 		//return;
 		for(var x=0;x<steps-1;x++) {
 			new Effect.Morph('wipeBar-'+slider_code+x,{
+                queue: {scope: 'wipe-'+slider_code},
 				duration:wipeDuration,
 				style:'top:0px;height:'+wipeHeight+'px;', afterUpdate:
 				function() {
@@ -241,6 +248,7 @@ Effect.Wipe = function(element) {
 		}
 		
 		new Effect.Morph('wipeBar-'+slider_code+(steps-1),{
+            queue: {scope: 'wipe-'+slider_code },
 			duration:wipeDuration,
 			style:'top:0px;height:'+wipeHeight+'px;',
 			afterUpdate:function() {
