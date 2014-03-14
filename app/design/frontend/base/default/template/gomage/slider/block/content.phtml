@@ -1,5 +1,5 @@
 <?php
- /**
+/**
  * GoMage Slider Extension
  *
  * @category     Extension
@@ -10,78 +10,66 @@
  * @version      Release: 1.1
  */
 ?>
-<?php 
-	$item = $this->getBlockItem();
-	$slides = $this->getBlockSlides(); 
-	$_slide = $slides[$item->getId()];
-    $_slide = array_values($_slide);
-    $_slide = array_shift($_slide);
-	$_helper = Mage::helper('gomage_slider');
-
+<?php
+$item = $this->getBlockItem();
+$slides = $this->getBlockSlides();
+$_slide = $slides[$item->getId()];
+$_slide = array_values($_slide);
+$_slide = array_shift($_slide);
+$_helper = Mage::helper('gomage_slider');
 ?>
 
+<?php if ($_slide): ?>
+    <?php if ($item->getShowArrows() == GoMage_Slider_Model_Adminhtml_System_Config_Source_Navigation_Arrows::ALWAYS
+        ||
+        $item->getShowArrows() == GoMage_Slider_Model_Adminhtml_System_Config_Source_Navigation_Arrows::MOUSE
+    ): ?>
+        <div class="gps-arrow gomage-arrow-left">
+            <a class="left-<?php echo $this->slider_code; ?>"
+               href="javascript:void(0)"><span><?php echo $this->__('Previous') ?></span></a>
+        </div>
+    <?php endif; ?>
+    <div class="gomage-content-item">
+        <div class="gomage-image-container">
+            <div class="gomage-content-image" id="gomage-content-image" style="position: absolute;">
+                <a id="slide-id-<?php echo $this->slider_code; ?>"
+                   class="slide-id-<?php echo $this->slider_code; ?>" <?php echo $_slide->openSliderLinkInBlank(); ?>
+                   <?php if ($_slide->getSliderLink() != ''): ?>href="<?php echo $_slide->getSliderLink(); ?>"<?php endif; ?>><img
+                        id="gomage-content-image-src" class="gs-img-<?php echo $this->slider_code; ?>"
+                        alt="<?php echo $_slide->getAltText(); ?>"
+                        src="<?php echo Mage::getBaseUrl('media') . 'slider/' . $_slide->getImage(); ?>"/></a>
+            </div>
+        </div>
 
-<?php 
-	if ( $_slide ):
-	?>
-    <?php 
-    if ( $item->getShowArrows() == GoMage_Slider_Model_Adminhtml_System_Config_Source_Navigation_Arrows::ALWAYS
-    		||
-    	 $item->getShowArrows() == GoMage_Slider_Model_Adminhtml_System_Config_Source_Navigation_Arrows::MOUSE ):
-    ?>
-      <div class="gps-arrow gomage-arrow-left">
-        <a class="left-<?php echo $this->slider_code ;?>"  href="javascript: eval('GomageSlider_<?php echo $this->slider_code ;?>').returnNull();"><span><?php echo $this->__('Previous') ?></span></a>
-      </div>
-    <?php 
-    endif;
-    ?>
-		<div class="gomage-content-item">
-			<div class="gomage-image-container">
-				<div class="gomage-content-image" id="gomage-content-image" style="position: absolute;">
-					<a id="slide-id-<?php echo $this->slider_code ;?>" class="slide-id-<?php echo $this->slider_code ;?>" <?php echo $_slide->openSliderLinkInBlank(); ?> <?php if ( $_slide->getSliderLink() != '' ):?>href="<?php echo $_slide->getSliderLink(); ?>"<?php endif; ?>><img id="gomage-content-image-src" class="gs-img-<?php echo $this->slider_code ;?>" alt="<?php echo $_slide->getAltText(); ?>" src="<?php echo Mage::getBaseUrl('media').'slider/' . $_slide->getImage(); ?>" /></a>
-				</div>
-			</div>
+        <?php if ($_slide->getShowSliderText() == GoMage_Slider_Model_Adminhtml_System_Config_Source_Enabledisable::YES): ?>
+            <div class="gomage-content-container" style="<?php echo $item->containerCss(); ?>">
+                <div class="gomage-content gomage-content-<?php echo $this->slider_code; ?>">
+                    <div class="gomage-content-text-bg"
+                         style="<?php echo $_helper->getSlideTextBgStyle($_slide, $item); ?>"></div>
+                    <div class="gomage-content-text" style="<?php echo $_helper->getSlideTextStyle($_slide, $item); ?>">
+                        <?php echo $_slide->getSliderText(); ?>
+                    </div>
+                </div>
+            </div>
+        <?php endif; ?>
+    </div>
+    <?php if ($item->getShowArrows() == GoMage_Slider_Model_Adminhtml_System_Config_Source_Navigation_Arrows::ALWAYS
+        ||
+        $item->getShowArrows() == GoMage_Slider_Model_Adminhtml_System_Config_Source_Navigation_Arrows::MOUSE
+    ): ?>
+        <div class="gps-arrow gomage-arrow-right">
+            <a class="right-<?php echo $this->slider_code; ?>"
+               href="javascript:void(0)"><span><?php echo $this->__('Next') ?></span></a>
+        </div>
+    <?php endif; ?>
 
-			<?php 
-			if ( $_slide->getShowSliderText() == GoMage_Slider_Model_Adminhtml_System_Config_Source_Enabledisable::YES ):
-			?>
-			<div class="gomage-content-container" style="<?php echo $item->containerCss(); ?>">
-				<div class="gomage-content gomage-content-<?php echo $this->slider_code ;?>" >
-				
-					<div class="gomage-content-text-bg" style="<?php echo $_helper->getSlideTextBgStyle($_slide, $item); ?>">
-						
-					</div>
-					<div class="gomage-content-text" style="<?php echo $_helper->getSlideTextStyle($_slide, $item); ?>">
-						<?php echo $_slide->getSliderText(); ?>
-					</div>
-				</div>
-			</div>
-			<?php 
-			endif;
-			?>
-		</div>
-    <?php 
-    if ( $item->getShowArrows() == GoMage_Slider_Model_Adminhtml_System_Config_Source_Navigation_Arrows::ALWAYS
-    		||
-    	 $item->getShowArrows() == GoMage_Slider_Model_Adminhtml_System_Config_Source_Navigation_Arrows::MOUSE ):
-    ?>
-      <div class="gps-arrow gomage-arrow-right">
-        <a class="right-<?php echo $this->slider_code ;?>" href="javascript: eval('GomageSlider_<?php echo $this->slider_code ;?>').returnNull();"><span><?php echo $this->__('Next') ?></span></a>
-      </div>
-    <?php 
-    endif;
+    <?php if ($item->getShowPauseButton() == GoMage_Slider_Model_Adminhtml_System_Config_Source_Enabledisable::YES): ?>
+        <div class="gomage-play-pause gomage-pause gomage-play-pause-<?php echo $this->slider_code; ?>">
+            <a class="play-pause-<?php echo $this->slider_code; ?>" href="javascript:void(0)"
+               title="<?php echo $this->__('Pause') ?>"><span></span><span></span></a>
+        </div>
+    <?php endif; ?>
 
-    if ($item->getShowPauseButton() == GoMage_Slider_Model_Adminhtml_System_Config_Source_Enabledisable::YES ):
-	?>
-		<div class="gomage-play-pause gomage-pause gomage-play-pause-<?php echo $this->slider_code ;?>">
-			<a class="play-pause-<?php echo $this->slider_code ;?>" href="javascript: eval('GomageSlider_<?php echo $this->slider_code ;?>').returnNull();" title="<?php echo $this->__('Pause') ?>"><span></span><span></span></a>
-		</div>
-	<?php 
-	endif;
-    ?>  
-    
-    <?php echo $this->getNavigationbarHtml($item, $slides, $this->slider_code ); ?>
-    
-	<?php 
-	endif;
-?>
+    <?php echo $this->getNavigationbarHtml($item, $slides, $this->slider_code); ?>
+
+<?php endif; ?>
