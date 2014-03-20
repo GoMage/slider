@@ -28,7 +28,7 @@ if ( $item->getShowNavigationBar() == GoMage_Slider_Model_Adminhtml_System_Confi
 			<?php 
 			foreach( $slides[$item->getId()] as $_order => $_item ):
 			?>
-				<li id="slide-order-<?php echo $this->slider_code ;?>-<?php echo $_order;?>" class="sidebar-link gs-<?php echo $this->slider_code ;?> <?php echo ( $i == 1 ) ? 'active' : ''; ?>">
+				<li id="slide-order-<?php echo $this->slider_code ;?>-<?php echo $_order;?>"  data-id="<?php echo $_order;?>" class="sidebar-link gs-<?php echo $this->slider_code ;?> <?php echo ( $i == 1 ) ? 'active' : ''; ?>">
 					
 				</li>
 			<?php 

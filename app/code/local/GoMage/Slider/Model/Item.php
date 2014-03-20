@@ -12,16 +12,16 @@
 
 class GoMage_Slider_Model_Item extends Mage_Core_Model_Abstract
 {	
-	const EFFECT_SIMPLE = 1;
-    const EFFECT_VERTICAL_SPLIT = 2;
-    const EFFECT_HORIZONTAL_SPLIT = 3;
-    const EFFECT_WIPE_RIGHT = 4;
-    const EFFECT_WIPE_LEFT = 5;
-    const EFFECT_WIPE_UP = 6;
-    const EFFECT_WIPE_DOWN = 7;
-    const EFFECT_PAGE_FLIP = 8;
-    const EFFECT_HORIZONTAL_PANELS = 9;
-    const EFFECT_VERTICAL_PANELS = 10;
+	const EFFECT_SIMPLE = 'SIMPLE';
+    const EFFECT_VERTICAL_SPLIT = 'VERTICAL_SPLIT';
+    const EFFECT_HORIZONTAL_SPLIT = 'HORIZONTAL_SPLIT';
+    const EFFECT_WIPE_RIGHT = 'WIPE_RIGHT';
+    const EFFECT_WIPE_LEFT = 'WIPE_LEFT';
+    const EFFECT_WIPE_UP = 'WIPE_UP';
+    const EFFECT_WIPE_DOWN = 'WIPE_DOWN';
+    const EFFECT_PAGE_FLIP = 'PAGE_FLIP';
+    const EFFECT_HORIZONTAL_PANELS = 'HORIZONTAL_PANELS';
+    const EFFECT_VERTICAL_PANELS = 'VERTICAL_PANELS';
 	
     public function _construct()
     {
@@ -48,6 +48,7 @@ class GoMage_Slider_Model_Item extends Mage_Core_Model_Abstract
     
 	public function containerCss()
     {
+
     	if ( $this->getNavigationBarAlignment() != GoMage_Slider_Model_Adminhtml_System_Config_Source_Navigation_Alignment::TOP
 	    			&&
     		 $this->getNavigationBarAlignment() != GoMage_Slider_Model_Adminhtml_System_Config_Source_Navigation_Alignment::BOTTOM )

@@ -41,7 +41,7 @@ class GoMage_Slider_Block_Adminhtml_Slides_Edit_Tab_Description extends Mage_Adm
             array(
                 'name'   => 'show_slider_text',
                 'label'  => $this->__('Show Description Window'),                
-                'values' => Mage::getModel('gomage_slider/adminhtml_system_config_source_enabledisable')->toOptionArray(), 
+                'values' => Mage::getModel('adminhtml/system_config_source_enabledisable')->toOptionArray(),
             )
         );
         

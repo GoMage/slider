@@ -11,51 +11,51 @@
  */
 ?>
 <?php
-$item = $this->getItems($this->getBlockCode());
-$_helper = Mage::helper('gomage_slider');
-$sliderCode = $_helper->generateCode();
+$block = $this->getItems($this->getBlockCode());
+if($block){
+    $sliderCode = $block->getSliderCode();
+}
+
 ?>
 
-<?php if ($item && $item->getSlides() && $item->getSlides() != '[]'): ?>
-    <div id="gomage-slider-block-<?php echo $sliderCode; ?>-<?php echo $item->getId(); ?>"
-        <?php echo ($item->getShowArrows() == GoMage_Slider_Model_Adminhtml_System_Config_Source_Navigation_Arrows::MOUSE) ? 'class="gps-arrows-hover gomage-slider-block-' . $item->getId() . '"' : 'class="gomage-slider-block-' . $item->getId() . '"'; ?>>
-        <?php if ($item->getNavigationBarAlignment() == GoMage_Slider_Model_Adminhtml_System_Config_Source_Navigation_Alignment::TOP
+<?php if ($block && $block->getSlides() && $block->getSlides() != '[]'): ?>
+    <div id="gomage-slider-block-<?php echo $sliderCode; ?>"
+        <?php echo ($block->getShowArrows() == GoMage_Slider_Model_Adminhtml_System_Config_Source_Navigation_Arrows::MOUSE) ? 'class="gps-arrows-hover gomage-slider-block-' . $block->getSliderCode() . '"' : 'class="gomage-slider-block-' . $block->getSliderCode() . '"'; ?>>
+        <?php if ($block->getNavigationBarAlignment() == GoMage_Slider_Model_Adminhtml_System_Config_Source_Navigation_Alignment::TOP
             &&
-            ($item->getShowNavigationBar() == GoMage_Slider_Model_Adminhtml_System_Config_Source_Navigation_Show::SIDEBAR
+            ($block->getShowNavigationBar() == GoMage_Slider_Model_Adminhtml_System_Config_Source_Navigation_Show::SIDEBAR
                 ||
-                $item->getShowNavigationBar() == GoMage_Slider_Model_Adminhtml_System_Config_Source_Navigation_Show::NO)
+                $block->getShowNavigationBar() == GoMage_Slider_Model_Adminhtml_System_Config_Source_Navigation_Show::NO)
         ): ?>
-            <div class="gomage-slider-sidebar gomage-slider-sidebar-<?php echo GoMage_Slider_Model_Adminhtml_System_Config_Source_Navigation_Alignment::getClassName($item->getNavigationBarAlignment()); ?>" <?php echo ($item->getShowNavigationBar() == GoMage_Slider_Model_Adminhtml_System_Config_Source_Navigation_Show::NO) ? 'style="display: none;"' : ''; ?>>
-                <?php echo $this->getSidebarHtml($item, $sliderCode); ?>
+            <div class="gomage-slider-sidebar gomage-slider-sidebar-<?php echo GoMage_Slider_Model_Adminhtml_System_Config_Source_Navigation_Alignment::getClassName($block->getNavigationBarAlignment()); ?>" <?php echo ($block->getShowNavigationBar() == GoMage_Slider_Model_Adminhtml_System_Config_Source_Navigation_Show::NO) ? 'style="display: none;"' : ''; ?>>
+                <?php echo $this->getSidebarHtml($block, $sliderCode); ?>
             </div>
         <?php endif; ?>
         <div class="gomage-slider-container">
             <div class="gomage-slider-content">
-                <?php echo $this->getContentHtml($item, $sliderCode); ?>
+                <?php echo $this->getContentHtml($block, $sliderCode); ?>
             </div>
         </div>
-        <?php if ($item->getNavigationBarAlignment() != GoMage_Slider_Model_Adminhtml_System_Config_Source_Navigation_Alignment::TOP
+        <?php if ($block->getNavigationBarAlignment() != GoMage_Slider_Model_Adminhtml_System_Config_Source_Navigation_Alignment::TOP
             &&
-            ($item->getShowNavigationBar() == GoMage_Slider_Model_Adminhtml_System_Config_Source_Navigation_Show::SIDEBAR
+            ($block->getShowNavigationBar() == GoMage_Slider_Model_Adminhtml_System_Config_Source_Navigation_Show::SIDEBAR
                 ||
-                $item->getShowNavigationBar() == GoMage_Slider_Model_Adminhtml_System_Config_Source_Navigation_Show::NO)
+                $block->getShowNavigationBar() == GoMage_Slider_Model_Adminhtml_System_Config_Source_Navigation_Show::NO)
         ): ?>
             <div
-                class="gomage-slider-sidebar gomage-slider-sidebar-<?php echo GoMage_Slider_Model_Adminhtml_System_Config_Source_Navigation_Alignment::getClassName($item->getNavigationBarAlignment()); ?>" <?php echo ($item->getShowNavigationBar() == GoMage_Slider_Model_Adminhtml_System_Config_Source_Navigation_Show::NO) ? 'style="display: none;"' : ''; ?>>
-                <?php echo $this->getSidebarHtml($item, $sliderCode); ?>
+                class="gomage-slider-sidebar gomage-slider-sidebar-<?php echo GoMage_Slider_Model_Adminhtml_System_Config_Source_Navigation_Alignment::getClassName($block->getNavigationBarAlignment()); ?>" <?php echo ($block->getShowNavigationBar() == GoMage_Slider_Model_Adminhtml_System_Config_Source_Navigation_Show::NO) ? 'style="display: none;"' : ''; ?>>
+                <?php echo $this->getSidebarHtml($block, $sliderCode); ?>
             </div>
         <?php endif; ?>
     </div>
 
     <script type="text/javascript">
         //<![CDATA[
-        new GomageSliderClass({gomage_slider_config:<?php echo $this->getConfig(); ?>,
-            gomage_slider_slides:<?php echo $this->getSlidesJson($this->getBlockId($this->getBlockCode())); ?>,
-            block_id: <?php echo $this->getBlockId($this->getBlockCode()); ?>,
-            start_order_id: <?php echo $this->getStartOrderId($this->getBlockCode()); ?>,
-            slides_count: <?php echo $this->getSlidesCount(); ?>,
+        new GomageSliderClass({
+            config:<?php echo $this->getConfig(); ?>,
+            slides:<?php echo $this->getSlidesJson($this->getBlockId($this->getBlockCode())); ?>,
             slider_code: '<?php echo $sliderCode; ?>',
-            auto_start: <?php echo  $item->getEnableAutostart();?>
+            auto_start: <?php echo  $block->getEnableAutostart();?>
         });
 
         //]]>

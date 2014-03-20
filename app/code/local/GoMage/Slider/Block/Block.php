@@ -78,49 +78,49 @@ class GoMage_Slider_Block_Block extends GoMage_Slider_Block_Abstract{
     
 	public function getBlockConfig($item)
     { 
-        $helper = Mage::helper('gomage_slider');
-		     
-        $this->_config[$item->getId()]['change_slides_manually'] = $item->getData('change_slides_manually');
-        $this->_config[$item->getId()]['delay_time'] = $item->getData('delay_time');
-		$this->_config[$item->getId()]['transition_time'] = $item->getData('transition_time');
-		$this->_config[$item->getId()]['enable_autostart'] = $item->getData('enable_autostart');
-		$this->_config[$item->getId()]['change_slides_manually'] = $item->getData('change_slides_manually');
-		$this->_config[$item->getId()]['block_width'] = $item->getData('block_width');
-		$this->_config[$item->getId()]['block_height'] = $item->getData('block_height');
-		$this->_config[$item->getId()]['delay_time'] = $item->getData('delay_time');
-		$this->_config[$item->getId()]['show_navigation_bar'] = $item->getData('show_navigation_bar');
-		$this->_config[$item->getId()]['navigation_bar_alignment'] = $item->getData('navigation_bar_alignment');
-		$this->_config[$item->getId()]['sidebar_width'] = $item->getData('sidebar_width');
-		$this->_config[$item->getId()]['sidebar_height'] = $item->getData('sidebar_height');
-		
-		$this->_config[$item->getId()]['play'] = Mage::getBaseUrl('skin') . 'frontend/base/default/images/gomage/slider/play.gif';
-		$this->_config[$item->getId()]['pause'] = Mage::getBaseUrl('skin') . 'frontend/base/default/images/gomage/slider/pause.gif';
+        $this->_config[$item->getSliderCode()]['change_slides_manually'] = $item->getData('change_slides_manually');
+        $this->_config[$item->getSliderCode()]['show_arrows'] = $item->getData('show_arrows');
+        $this->_config[$item->getSliderCode()]['delay_time'] = $item->getData('delay_time');
+		$this->_config[$item->getSliderCode()]['transition_time'] = $item->getData('transition_time');
+		$this->_config[$item->getSliderCode()]['enable_autostart'] = $item->getData('enable_autostart');
+		$this->_config[$item->getSliderCode()]['block_width'] = $item->getData('block_width');
+		$this->_config[$item->getSliderCode()]['block_height'] = $item->getData('block_height');
+		$this->_config[$item->getSliderCode()]['delay_time'] = $item->getData('delay_time');
+		$this->_config[$item->getSliderCode()]['show_navigation_bar'] = $item->getData('show_navigation_bar');
+		$this->_config[$item->getSliderCode()]['navigation_bar_alignment'] = $item->getData('navigation_bar_alignment');
+		$this->_config[$item->getSliderCode()]['sidebar_width'] = $item->getData('sidebar_width');
+		$this->_config[$item->getSliderCode()]['sidebar_height'] = $item->getData('sidebar_height');
+		$this->_config[$item->getSliderCode()]['play'] = Mage::getBaseUrl('skin') . 'frontend/base/default/images/gomage/slider/play.gif';
+		$this->_config[$item->getSliderCode()]['pause'] = Mage::getBaseUrl('skin') . 'frontend/base/default/images/gomage/slider/pause.gif';
 		
 		$this->getSlides($item);
     }
     
 	public function getSlideConfigJs($item, $slide, $block_id)
-    { 
-		$this->_slidesjs[$block_id][$slide['order']]['image'] = Mage::getBaseUrl('media').'slider/' . $item->getData('image');
-		$this->_slidesjs[$block_id][$slide['order']]['alt_text'] = $item->getData('alt_text');
-		$this->_slidesjs[$block_id][$slide['order']]['slider_link'] = $item->getData('slider_link');
-		$this->_slidesjs[$block_id][$slide['order']]['open_slider_link_in'] = $item->getData('open_slider_link_in');
-		$this->_slidesjs[$block_id][$slide['order']]['slider_text'] = $item->getData('slider_text');
-		$this->_slidesjs[$block_id][$slide['order']]['text_window_alignment'] = $item->getData('text_window_alignment');
-		$this->_slidesjs[$block_id][$slide['order']]['text_window_width'] = $item->getData('text_window_width');
-		$this->_slidesjs[$block_id][$slide['order']]['text_window_height'] = $item->getData('text_window_height');
-		$this->_slidesjs[$block_id][$slide['order']]['text_window_background'] = $item->getData('text_window_background');
-		$this->_slidesjs[$block_id][$slide['order']]['text_window_opacity'] = $item->getData('background_opacity');
-		$this->_slidesjs[$block_id][$slide['order']]['text_window_left_indent'] = $item->getData('text_window_left_indent');
-		$this->_slidesjs[$block_id][$slide['order']]['text_window_top_indent'] = $item->getData('text_window_top_indent');
-		$this->_slidesjs[$block_id][$slide['order']]['sidebar_content'] = $item->getData('sidebar_content');
-		$this->_slidesjs[$block_id][$slide['order']]['effect'] = $slide['effect'];
+    {
+
+        $this->_slidesjs[$slide['order']]['image'] = Mage::getBaseUrl('media').'slider/' . $item->getData('image');
+		$this->_slidesjs[$slide['order']]['alt_text'] = $item->getData('alt_text');
+		$this->_slidesjs[$slide['order']]['slider_link'] = $item->getData('slider_link');
+		$this->_slidesjs[$slide['order']]['open_slider_link_in'] = $item->getData('open_slider_link_in');
+		$this->_slidesjs[$slide['order']]['slider_text'] = $item->getData('slider_text');
+		$this->_slidesjs[$slide['order']]['text_window_alignment'] = $item->getData('text_window_alignment');
+		$this->_slidesjs[$slide['order']]['text_window_width'] = $item->getData('text_window_width');
+		$this->_slidesjs[$slide['order']]['text_window_height'] = $item->getData('text_window_height');
+		$this->_slidesjs[$slide['order']]['text_window_background'] = $item->getData('text_window_background');
+		$this->_slidesjs[$slide['order']]['text_window_opacity'] = $item->getData('background_opacity');
+		$this->_slidesjs[$slide['order']]['text_window_left_indent'] = $item->getData('text_window_left_indent');
+		$this->_slidesjs[$slide['order']]['text_window_top_indent'] = $item->getData('text_window_top_indent');
+		$this->_slidesjs[$slide['order']]['sidebar_content'] = $item->getData('sidebar_content');
+		$this->_slidesjs[$slide['order']]['effect'] = $slide['effect'];
+
     }
     
 	public function getSlidesJson($block_id)
     {
-    	ksort($this->_slidesjs[$block_id]);
-    	
+
+        ksort($this->_slidesjs);
+
     	return Mage::helper('core')->jsonEncode($this->_slidesjs);
     }
 }

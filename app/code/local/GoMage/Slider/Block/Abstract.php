@@ -31,7 +31,7 @@ class GoMage_Slider_Block_Abstract extends Mage_Core_Block_Template{
     
     public function getItems($block_code = null)
     {	
-    	
+
         if (is_null($this->_items)){
         
             $collection = Mage::getResourceModel('gomage_slider/item_collection')
@@ -42,7 +42,7 @@ class GoMage_Slider_Block_Abstract extends Mage_Core_Block_Template{
             	{
             		if ( $block_code == $item->getCode() )
             		{
-		                $this->_items[$item->getCode()] = $item;  
+		                $this->_items[$item->getCode()] = $item;
 		                $this->getBlockConfig($item);
 		                $this->_setBlockId($item->getId());
             		}
@@ -54,7 +54,7 @@ class GoMage_Slider_Block_Abstract extends Mage_Core_Block_Template{
         {
         	return $this->_items[$block_code];
         }
-        
+
         return $this->_items;
     }     
     
@@ -83,15 +83,12 @@ class GoMage_Slider_Block_Abstract extends Mage_Core_Block_Template{
 	        	{
 	            	$this->getSlideConfig($item, $slide_array[$item->getId()], $blockItem->getId());
 	            	$this->getSlideConfigJs($item, $slide_array[$item->getId()], $blockItem->getId());
-	            	$this->_slides_count++;
+
 	        	}                               
 	        }
-	        
+
     	}
     }
     
-    public function getSlidesCount()
-    {
-    	return $this->_slides_count;
-    }
+
 }

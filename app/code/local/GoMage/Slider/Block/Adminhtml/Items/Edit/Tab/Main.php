@@ -17,7 +17,7 @@ class GoMage_Slider_Block_Adminhtml_Items_Edit_Tab_Main extends Mage_Adminhtml_B
     {
         
         $form = new Varien_Data_Form();
-        
+
         if(Mage::registry('gomage_slider')){
         	$item = Mage::registry('gomage_slider');
         }else{
@@ -44,7 +44,11 @@ class GoMage_Slider_Block_Adminhtml_Items_Edit_Tab_Main extends Mage_Adminhtml_B
             'required'  => true,  
  		    'note'	    => $this->__('For internal use.'),    	
         ));
-        
+
+        $fieldset->addField('slider_code', 'hidden', array(
+            'name'      => 'slider_code',
+        ));
+
         $fieldset->addField('code', 'text', array(
             'name'      => 'code',
             'label'     => $this->__('Block Code'),
@@ -88,7 +92,7 @@ class GoMage_Slider_Block_Adminhtml_Items_Edit_Tab_Main extends Mage_Adminhtml_B
             array(
                 'name'   => 'enable_autostart',
                 'label'  => $this->__('Enable Autostart'),                
-                'values' => Mage::getModel('gomage_slider/adminhtml_system_config_source_enabledisable')->toOptionArray(), 
+                'values' => Mage::getModel('adminhtml/system_config_source_yesno')->toOptionArray(),
             )
         );
         
@@ -96,7 +100,7 @@ class GoMage_Slider_Block_Adminhtml_Items_Edit_Tab_Main extends Mage_Adminhtml_B
             array(
                 'name'   => 'show_pause_button',
                 'label'  => $this->__('Show Start/Pause Button'),                
-                'values' => Mage::getModel('gomage_slider/adminhtml_system_config_source_enabledisable')->toOptionArray(), 
+                'values' => Mage::getModel('adminhtml/system_config_source_yesno')->toOptionArray(),
             )
         );
         
@@ -121,9 +125,11 @@ class GoMage_Slider_Block_Adminhtml_Items_Edit_Tab_Main extends Mage_Adminhtml_B
             'format'    => Mage::app()->getLocale()->getDateFormat(Mage_Core_Model_Locale::FORMAT_TYPE_SHORT),
             'image'     => $this->getSkinUrl('images/grid-cal.gif'),            
         ));
-        
-        $form->setValues($item->getData());        
-        
+
+       $data = $item->getData();
+       $data['slider_code'] =  Mage::helper('gomage_slider')->generateCode();
+       $form->setValues($data);
+
         return parent::_prepareForm();
         
     }

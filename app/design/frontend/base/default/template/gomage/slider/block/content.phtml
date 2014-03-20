@@ -11,18 +11,18 @@
  */
 ?>
 <?php
-$item = $this->getBlockItem();
+$block = $this->getBlockItem();
 $slides = $this->getBlockSlides();
-$_slide = $slides[$item->getId()];
+$_slide = $slides[$block->getId()];
 $_slide = array_values($_slide);
 $_slide = array_shift($_slide);
 $_helper = Mage::helper('gomage_slider');
 ?>
 
 <?php if ($_slide): ?>
-    <?php if ($item->getShowArrows() == GoMage_Slider_Model_Adminhtml_System_Config_Source_Navigation_Arrows::ALWAYS
+    <?php if ($block->getShowArrows() == GoMage_Slider_Model_Adminhtml_System_Config_Source_Navigation_Arrows::ALWAYS
         ||
-        $item->getShowArrows() == GoMage_Slider_Model_Adminhtml_System_Config_Source_Navigation_Arrows::MOUSE
+        $block->getShowArrows() == GoMage_Slider_Model_Adminhtml_System_Config_Source_Navigation_Arrows::MOUSE
     ): ?>
         <div class="gps-arrow gomage-arrow-left">
             <a class="left-<?php echo $this->slider_code; ?>"
@@ -41,21 +41,21 @@ $_helper = Mage::helper('gomage_slider');
             </div>
         </div>
 
-        <?php if ($_slide->getShowSliderText() == GoMage_Slider_Model_Adminhtml_System_Config_Source_Enabledisable::YES): ?>
-            <div class="gomage-content-container" style="<?php echo $item->containerCss(); ?>">
+        <?php if ($_slide->getShowSliderText()): ?>
+            <div class="gomage-content-container" style="<?php echo $block->containerCss(); ?>">
                 <div class="gomage-content gomage-content-<?php echo $this->slider_code; ?>">
                     <div class="gomage-content-text-bg"
-                         style="<?php echo $_helper->getSlideTextBgStyle($_slide, $item); ?>"></div>
-                    <div class="gomage-content-text" style="<?php echo $_helper->getSlideTextStyle($_slide, $item); ?>">
+                         style="<?php echo $_helper->getSlideTextBgStyle($_slide, $block); ?>"></div>
+                    <div class="gomage-content-text" style="<?php echo $_helper->getSlideTextStyle($_slide, $block); ?>">
                         <?php echo $_slide->getSliderText(); ?>
                     </div>
                 </div>
             </div>
         <?php endif; ?>
     </div>
-    <?php if ($item->getShowArrows() == GoMage_Slider_Model_Adminhtml_System_Config_Source_Navigation_Arrows::ALWAYS
+    <?php if ($block->getShowArrows() == GoMage_Slider_Model_Adminhtml_System_Config_Source_Navigation_Arrows::ALWAYS
         ||
-        $item->getShowArrows() == GoMage_Slider_Model_Adminhtml_System_Config_Source_Navigation_Arrows::MOUSE
+        $block->getShowArrows() == GoMage_Slider_Model_Adminhtml_System_Config_Source_Navigation_Arrows::MOUSE
     ): ?>
         <div class="gps-arrow gomage-arrow-right">
             <a class="right-<?php echo $this->slider_code; ?>"
@@ -63,13 +63,13 @@ $_helper = Mage::helper('gomage_slider');
         </div>
     <?php endif; ?>
 
-    <?php if ($item->getShowPauseButton() == GoMage_Slider_Model_Adminhtml_System_Config_Source_Enabledisable::YES): ?>
-        <div class="gomage-play-pause gomage-pause gomage-play-pause-<?php echo $this->slider_code; ?>">
+    <?php if ($block->getShowPauseButton()): ?>
+        <div class="gomage-play-pause <?php if($block->getEnableAutostart()){ echo 'gomage-pause'; } else  {echo 'gomage-play';} ?>  gomage-play-pause-<?php echo $this->slider_code; ?>">
             <a class="play-pause-<?php echo $this->slider_code; ?>" href="javascript:void(0)"
                title="<?php echo $this->__('Pause') ?>"><span></span><span></span></a>
         </div>
     <?php endif; ?>
 
-    <?php echo $this->getNavigationbarHtml($item, $slides, $this->slider_code); ?>
+    <?php echo $this->getNavigationbarHtml($block, $slides, $this->slider_code); ?>
 
 <?php endif; ?>
