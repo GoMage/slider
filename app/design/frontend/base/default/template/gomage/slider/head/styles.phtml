@@ -13,53 +13,28 @@
 <style type="text/css">
 
 <?php foreach ($this->getBlocks() as $block): ?>
-
 	   .gomage-slider-block-<?php echo $block->getCode() ?>{
 			<?php echo $block->blockCss(); ?>
   	   }
-
-	   .gomage-slider-block-<?php echo $block->getCode() ?> .gomage-content-item{
-			<?php //echo $block->imageCss(); ?>
-			overflow: hidden;
-  	   }
-
-	   .gomage-slider-block-<?php echo $block->getCode() ?> .gomage-content{
-			<?php echo $block->contentCss(); ?>
-  	   }
-
-	   .gomage-slider-block-<?php echo $block->getCode() ?> .gomage-content-item .gomage-content-image{
-			<?php //echo $block->imageCss(); ?>
-			/* position: absolute; */
-  	   }
-
-	   .gomage-slider-block-<?php echo $block->getCode() ?> .gomage-content-item .gomage-content-image img{
-			<?php //echo $block->imageCss();?>
-  	   }
-
        .gomage-slider-block-<?php echo $block->getCode() ?> .gomage-content{
 			float: left;
   	   }
-
 	   .gomage-slider-block-<?php echo $block->getCode() ?> .gomage-slider-container{
-			<?php //echo $block->containerCssStyle(); ?>
+			<?php echo $block->containerCssStyle(); ?>
   	   }
-
-	  .gomage-slider-block-<?php echo $block->getCode() ?> .gomage-slider-sidebar{
+	   .gomage-slider-block-<?php echo $block->getCode() ?> .gomage-slider-sidebar{
 			<?php echo $block->sideBarCss(); ?>
-  	  }
-
-	  .gomage-slider-block-<?php echo $block->getCode() ?> .gomage-sidebar-item{
+  	   }
+	   .gomage-slider-block-<?php echo $block->getCode() ?> .gomage-sidebar-item{
 			<?php echo $block->sideBarBlockCss(); ?>
-  	  }
+  	   }
 
     /* Arrow Color
     -------------------------------------------------- */
-
       /* Left Arrow */
      .gomage-slider-block-<?php echo $block->getCode() ?> .gomage-arrow-left span{
         border-right-color: #<?php echo $block->getArrowColor(); ?>;
      }
-
       /* Right Arrow */
      .gomage-slider-block-<?php echo $block->getCode() ?> .gomage-arrow-right span{
         border-left-color: #<?php echo $block->getArrowColor(); ?>;
@@ -67,17 +42,14 @@
 
     /* Mouse Over Arrow Color
     -------------------------------------------------- */
-
       /* Left Arrow */
      .gomage-slider-block-<?php echo $block->getCode() ?> .gomage-arrow-left:hover span{
         border-right-color: #<?php echo $block->getMouseOverColor(); ?>;
      }
-
       /* Right Arrow */
      .gomage-slider-block-<?php echo $block->getCode() ?> .gomage-arrow-right:hover span{
         border-left-color: #<?php echo $block->getMouseOverColor(); ?>;
      }
-
 
 	<?php if ( $block->getArrowsType() == GoMage_Slider_Model_Adminhtml_System_Config_Source_Navigation_Arrowstype::STYLE2 ): ?>
       /* Mouse Over Background Color
@@ -86,7 +58,6 @@
         background: #<?php echo $block->getMouseOverBackground(); ?>;
       }
 	<?php endif; ?>
-
 
 <?php endforeach; ?>
 

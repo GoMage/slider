@@ -225,14 +225,14 @@ GomageSliderClass = Class.create({
                         &&
                         this.config.navigation_bar_alignment != 4) //BOTTOM
                     {
-                        width = (Math.ceil(this.config.block_width)) - (Math.ceil(this.config.sidebar_width));
+                        width = (Math.ceil(this.getBlockWidth())) - (Math.ceil(this.config.sidebar_width));
                     }
                     else {
-                        width = (Math.ceil(this.config.block_width));
+                        width = (Math.ceil(this.getBlockWidth()));
                     }
                 }
                 else {
-                    width = (Math.ceil(this.config.block_width));
+                    width = (Math.ceil(this.getBlockWidth()));
                 }
 
                 width = width - leftIndent;
@@ -252,14 +252,14 @@ GomageSliderClass = Class.create({
                         &&
                         this.config.navigation_bar_alignment != 4) //BOTTOM
                     {
-                        height = (Math.ceil(this.config.block_height));
+                        height = (Math.ceil(this.getBlockHeight()));
                     }
                     else {
-                        height = (Math.ceil(this.config.block_height)) - (Math.ceil(this.config.sidebar_height));
+                        height = (Math.ceil(this.getBlockHeight())) - (Math.ceil(this.config.sidebar_height));
                     }
                 }
                 else {
-                    height = (Math.ceil(this.config.block_height));
+                    height = (Math.ceil(this.getBlockHeight()));
                 }
 
                 height = height - topIndent;
@@ -416,8 +416,8 @@ GomageSliderClass = Class.create({
             $('slide-id-' + this.slider_code).innerHTML = '<img src="' + img.src + '" class="' + img.className + '">';
             new Effect.Wipe('slide-id-' + this.slider_code, {
                 slider_code: this.slider_code,
-                block_height: this.config.block_height,
-                block_width: this.config.block_width,
+                block_height: this.getBlockHeight(),
+                block_width: this.getBlockWidth(),
                 newImg: this.slides[slider_id].image,
                 duration: this.config.transition_time,
                 mode: mode
@@ -444,6 +444,15 @@ GomageSliderClass = Class.create({
         }
 
         return this.slides_count - 1;
+    },
+
+    getBlockHeight: function () {
+        return $('gomage-slider-block-' + this.slider_code).getHeight();
+    },
+
+    getBlockWidth: function () {
+        return $('gomage-slider-block-' + this.slider_code).getWidth();
     }
+
 
 });

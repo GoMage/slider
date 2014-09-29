@@ -51,96 +51,28 @@ class GoMage_Slider_Model_Block extends Mage_Core_Model_Abstract
         return true;
     }
 
-    public function containerCss()
-    {
-
-        if ($this->getNavigationBarAlignment() != GoMage_Slider_Model_Adminhtml_System_Config_Source_Navigation_Alignment::TOP
-            &&
-            $this->getNavigationBarAlignment() != GoMage_Slider_Model_Adminhtml_System_Config_Source_Navigation_Alignment::BOTTOM
-        ) {
-            $width = intval($this->getBlockWidth()) - intval($this->getSidebarWidth());
-        } else {
-            $width = intval($this->getBlockWidth());
-        }
-
-        $css = 'width: ' . $width . 'px;';
-
-        return $css;
-    }
-
     public function containerCssStyle()
     {
-        if ($this->getShowNavigationBar() == GoMage_Slider_Model_Adminhtml_System_Config_Source_Navigation_Show::SIDEBAR) {
-            $clear = '';
-            if ($this->getNavigationBarAlignment() != GoMage_Slider_Model_Adminhtml_System_Config_Source_Navigation_Alignment::TOP
-                &&
-                $this->getNavigationBarAlignment() != GoMage_Slider_Model_Adminhtml_System_Config_Source_Navigation_Alignment::BOTTOM
-            ) {
-                $width  = intval($this->getBlockWidth()) - intval($this->getSidebarWidth());
-                $height = intval($this->getBlockHeight());
-            } else {
-                $width  = intval($this->getBlockWidth());
-                $height = intval($this->getBlockHeight()) - intval($this->getSidebarHeight());
-                $clear  = 'clear:both;';
-            }
+        $css = '';
 
-            $css = 'width: ' . $width . 'px; height: ' . $height . 'px;' . $clear;
+        if ($this->getShowNavigationBar() == GoMage_Slider_Model_Adminhtml_System_Config_Source_Navigation_Show::SIDEBAR) {
+            if ($this->getNavigationBarAlignment() == GoMage_Slider_Model_Adminhtml_System_Config_Source_Navigation_Alignment::LEFT ||
+                $this->getNavigationBarAlignment() == GoMage_Slider_Model_Adminhtml_System_Config_Source_Navigation_Alignment::RIGHT
+            ) {
+                $css .= 'clear:both;';
+            }
 
             switch ($this->getNavigationBarAlignment()) {
                 case GoMage_Slider_Model_Adminhtml_System_Config_Source_Navigation_Alignment::RIGHT :
                     $css .= 'float: left;';
                     break;
-
                 case GoMage_Slider_Model_Adminhtml_System_Config_Source_Navigation_Alignment::LEFT :
                     $css .= 'float: right;';
                     break;
             }
-        } else {
-            $width = intval($this->getBlockWidth());
-            $css   = 'width: ' . $width . 'px;';
         }
 
         return $css;
-    }
-
-    public function imageCss()
-    {
-        if ($this->getShowNavigationBar() == GoMage_Slider_Model_Adminhtml_System_Config_Source_Navigation_Show::SIDEBAR) {
-            if ($this->getNavigationBarAlignment() == GoMage_Slider_Model_Adminhtml_System_Config_Source_Navigation_Alignment::TOP
-                ||
-                $this->getNavigationBarAlignment() == GoMage_Slider_Model_Adminhtml_System_Config_Source_Navigation_Alignment::BOTTOM
-            ) {
-                $width = intval($this->getBlockWidth());
-
-                $height = intval($this->getBlockHeight()) - (intval($this->getSidebarHeight()));
-            } else {
-                $width  = intval($this->getBlockWidth()) - intval($this->getSidebarWidth());
-                $height = intval($this->getBlockHeight());
-            }
-        } else {
-            $width  = intval($this->getBlockWidth());
-            $height = intval($this->getBlockHeight());
-        }
-
-        return 'width: ' . $width . 'px; height: ' . $height . 'px;';
-    }
-
-    public function contentCss()
-    {
-        if ($this->getShowNavigationBar() == GoMage_Slider_Model_Adminhtml_System_Config_Source_Navigation_Show::SIDEBAR) {
-            if ($this->getNavigationBarAlignment() != GoMage_Slider_Model_Adminhtml_System_Config_Source_Navigation_Alignment::TOP
-                &&
-                $this->getNavigationBarAlignment() != GoMage_Slider_Model_Adminhtml_System_Config_Source_Navigation_Alignment::BOTTOM
-            ) {
-                $width = intval($this->getBlockWidth()) - intval($this->getSidebarWidth());
-            } else {
-                $width = intval($this->getBlockWidth());
-            }
-        } else {
-            $width = intval($this->getBlockWidth());
-        }
-
-        return 'width: ' . $width . 'px;';
     }
 
     public function blockCss()
