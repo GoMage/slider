@@ -81,12 +81,12 @@
 					<gomage_slider> 
 						<title>Slider</title>
 						<sort_order>20</sort_order>           
-						<action>gomage_slider/adminhtml_items</action>
+						<action>gomage_slider/adminhtml_blocks</action>
 						<children>
 							<gomage_manage_slider>
 								<title>Manage Slider Blocks</title>
 								<sort_order>10</sort_order>
-								<action>gomage_slider/adminhtml_items</action>
+								<action>gomage_slider/adminhtml_blocks</action>
 							</gomage_manage_slider>
 							<gomage_manage_slider_slides>
                                 <title>Manage Slides</title>
@@ -152,9 +152,9 @@
             <gomage_slider_mysql4>
                 <class>GoMage_Slider_Model_Mysql4</class>
                 <entities>
-                    <item>
+                    <block>
                         <table>gomage_slider_items</table>
-                    </item>
+                    </block>
                     <slide>
                         <table>gomage_slider_slides</table>
                     </slide>                 

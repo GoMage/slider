@@ -10,7 +10,7 @@
  * @version      Release: 1.1
  */
 
-class GoMage_Slider_Block_Adminhtml_Items_Edit_Tabs extends Mage_Adminhtml_Block_Widget_Tabs
+class GoMage_Slider_Block_Adminhtml_Blocks_Edit_Tabs extends Mage_Adminhtml_Block_Widget_Tabs
 {
     
     public function __construct(){
@@ -25,21 +25,21 @@ class GoMage_Slider_Block_Adminhtml_Items_Edit_Tabs extends Mage_Adminhtml_Block
     protected function _prepareLayout(){
          
         $this->addTab('main_section', array(
-            'label'     =>  $this->__('Item information'),
-            'title'     =>  $this->__('Item information'),
-            'content'   =>  $this->getLayout()->createBlock('gomage_slider/adminhtml_items_edit_tab_main')->toHtml(),
+            'label'     =>  $this->__('Block information'),
+            'title'     =>  $this->__('Block information'),
+            'content'   =>  $this->getLayout()->createBlock('gomage_slider/adminhtml_blocks_edit_tab_main')->toHtml(),
         ));
         
         $this->addTab('slider_settings', array(
 		            'label'     =>  $this->__('Slides'),
 		            'title'     =>  $this->__('Slides'),
-		            'content'   =>  $this->getLayout()->createBlock('gomage_slider/adminhtml_items_edit_tab_slider')->setTemplate('gomage/slider/item/edit/slider-settings.phtml')->toHtml(),
+		            'content'   =>  $this->getLayout()->createBlock('gomage_slider/adminhtml_blocks_edit_tab_slider')->setTemplate('gomage/slider/block/edit/slider-settings.phtml')->toHtml(),
 		        ));
         
         $this->addTab('navigation_bar', array(
             'label'     =>  $this->__('Navigation Bar'),
             'title'     =>  $this->__('Navigation Bar'),
-            'content'   =>  $this->getLayout()->createBlock('gomage_slider/adminhtml_items_edit_tab_navigation')->toHtml(),
+            'content'   =>  $this->getLayout()->createBlock('gomage_slider/adminhtml_blocks_edit_tab_navigation')->toHtml(),
         ));
         
         if($tabId = addslashes(htmlspecialchars($this->getRequest()->getParam('tab')))){

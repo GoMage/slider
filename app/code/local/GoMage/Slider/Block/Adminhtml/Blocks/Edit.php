@@ -10,7 +10,7 @@
  * @version      Release: 1.1
  */
 
-class GoMage_Slider_Block_Adminhtml_Items_Edit extends Mage_Adminhtml_Block_Widget_Form_Container
+class GoMage_Slider_Block_Adminhtml_Blocks_Edit extends Mage_Adminhtml_Block_Widget_Form_Container
 {
     public function __construct(){
     	
@@ -18,7 +18,7 @@ class GoMage_Slider_Block_Adminhtml_Items_Edit extends Mage_Adminhtml_Block_Widg
                  
         $this->_objectId = 'id';
         $this->_blockGroup = 'gomage_slider';
-        $this->_controller = 'adminhtml_items';
+        $this->_controller = 'adminhtml_blocks';
         
         $this->_updateButton('save', 'label', $this->__('Save'));
         $this->_updateButton('delete', 'label', $this->__('Delete'));			
@@ -54,7 +54,7 @@ class GoMage_Slider_Block_Adminhtml_Items_Edit extends Mage_Adminhtml_Block_Widg
         if( Mage::registry('gomage_slider') && Mage::registry('gomage_slider')->getId() ) {
             return $this->__("Edit %s", $this->htmlEscape(Mage::registry('gomage_slider')->getTitle()));
         } else {
-            return $this->__('Add Item');
+            return $this->__('Add Block');
         }
         
     }

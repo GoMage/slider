@@ -27,9 +27,9 @@ class GoMage_Slider_Block_Adminhtml_Slides_Edit_Tab_Description extends Mage_Adm
         $form = new Varien_Data_Form();
         
         if(Mage::registry('gomage_slider')){
-        	$item = Mage::registry('gomage_slider');
+            $slide = Mage::registry('gomage_slider');
         }else{
-        	$item = new Varien_Object();
+            $slide = new Varien_Object();
         }
         
         $this->setForm($form);
@@ -113,7 +113,7 @@ class GoMage_Slider_Block_Adminhtml_Slides_Edit_Tab_Description extends Mage_Adm
                     ->setTemplate('gomage/slider/content.phtml');
         $contentField->setRenderer($renderer);
        
-        $form->setValues($item->getData());        
+        $form->setValues($slide->getData());
         
         return parent::_prepareForm();
         

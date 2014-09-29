@@ -11,17 +11,14 @@
 GomageSliderClass = Class.create({
     config: null,
     slides: null,
-    ver:null,
+    ver: null,
     slides_count: 0,
-    start_order_id: 0,
     order_id: 0,
     autoplay_state: 'pause',
     slider_code: null,
-    auto_start: null,
     timeout_id: null,
 
     initialize: function (data) {
-
 
         this.ver = this.getInternetExplorerVersion();
 
@@ -36,39 +33,26 @@ GomageSliderClass = Class.create({
         if (data && (typeof data.slider_code != 'undefined')) {
             this.slider_code = data.slider_code;
         }
-        if (data && (typeof data.auto_start != 'undefined')) {
-            this.auto_start = data.auto_start;
-        }
-
-
-        if (data && (typeof data.start_order_id != 'undefined')) {
-            this.order_id = data.start_order_id;
-        }
 
         var self = this;
         var slider_code = this.slider_code;
         this.slides_count = this.slides.length
 
-
         var change_slides_manually_event = 'click';
-        if (this.config[slider_code].change_slides_manually != 1) {
+        if (this.config.change_slides_manually != 1) {
             change_slides_manually_event = 'mouseover';
         }
 
         $('gomage-slider-block-' + slider_code).observe(change_slides_manually_event, function (event) {
-
             var elem = Event.findElement(event, '.gs-' + slider_code);
-
             if (elem) {
                 var slider_id = elem.dataset.id;
                 self.changeSlide(slider_id, 'manual');
             }
-
-
         });
 
 
-        $('gomage-slider-block-' + slider_code ).observe('click', function (event) {
+        $('gomage-slider-block-' + slider_code).observe('click', function (event) {
 
             var elem = Event.findElement(event, 'div.gomage-arrow-right a.right-' + slider_code);
             if (elem) {
@@ -96,7 +80,7 @@ GomageSliderClass = Class.create({
 
         });
 
-        if (this.auto_start == 1) {
+        if (this.config.enable_autostart == 1) {
             this.start();
         }
 
@@ -105,7 +89,6 @@ GomageSliderClass = Class.create({
     navigate: function () {
         var url = this.slides.slider_link;
         var type = this.slides.open_slider_link_in;
-
         if (url != '') {
             if (type == '1' || type == '2') //1 - Not Set, 2 - Same Window
             {
@@ -115,13 +98,12 @@ GomageSliderClass = Class.create({
                 window.open(url, '_blank');
             }
         }
-
     },
 
     start: function () {
 
-        var pause_button = $('gomage-slider-block-' + this.slider_code ).down('div.gomage-play-pause-' + this.slider_code);
-        var pause_button_link = $('gomage-slider-block-' + this.slider_code ).down('div.gomage-play-pause-' + this.slider_code + ' a.play-pause-' + this.slider_code);
+        var pause_button = $('gomage-slider-block-' + this.slider_code).down('div.gomage-play-pause-' + this.slider_code);
+        var pause_button_link = $('gomage-slider-block-' + this.slider_code).down('div.gomage-play-pause-' + this.slider_code + ' a.play-pause-' + this.slider_code);
 
         if ($('gomage-slider-block-' + this.slider_code)) {
             if (pause_button) {
@@ -131,7 +113,7 @@ GomageSliderClass = Class.create({
             }
         }
 
-        var delay_time = Math.ceil(this.config[this.slider_code].delay_time);
+        var delay_time = Math.ceil(this.config.delay_time);
 
         if (delay_time == 0) {
             delay_time = 1;
@@ -190,9 +172,9 @@ GomageSliderClass = Class.create({
             queue.invoke('cancel');
         }
 
-        if (type = 'auto') {
-            var delay_time = Math.ceil(this.config[this.slider_code].delay_time);
-            var transition_time = Math.ceil(this.config[this.slider_code].transition_time);
+        if (type == 'auto') {
+            var delay_time = Math.ceil(this.config.delay_time);
+            var transition_time = Math.ceil(this.config.transition_time);
 
             if (delay_time == 0) {
                 delay_time = 1;
@@ -229,28 +211,28 @@ GomageSliderClass = Class.create({
             var content_text_bg = $('gomage-slider-block-' + this.slider_code).down('div.gomage-content-text-bg');
             var width;
             var height;
-            var leftIndent = Math.ceil(this.slides[slider_id].text_window_left_indent) ;
-            var topIndent = Math.ceil(this.slides[slider_id].text_window_top_indent) ;
+            var leftIndent = Math.ceil(this.slides[slider_id].text_window_left_indent);
+            var topIndent = Math.ceil(this.slides[slider_id].text_window_top_indent);
 
             if (this.slides[slider_id].text_window_width != '' && (Math.ceil(this.slides[slider_id].text_window_width)) > 0) {
                 content_text.style.width = this.slides[slider_id].text_window_width + 'px';
                 content_text_bg.style.width = this.slides[slider_id].text_window_width + 'px';
             }
             else {
-                if (this.config[this.slider_code].show_navigation_bar == 2) // 2 - Sidebar
+                if (this.config.show_navigation_bar == 2) // 2 - Sidebar
                 {
-                    if (this.config[this.slider_code].navigation_bar_alignment != 3 //TOP
+                    if (this.config.navigation_bar_alignment != 3 //TOP
                         &&
-                        this.config[this.slider_code].navigation_bar_alignment != 4) //BOTTOM
+                        this.config.navigation_bar_alignment != 4) //BOTTOM
                     {
-                        width = (Math.ceil(this.config[this.slider_code].block_width )) - (Math.ceil(this.config[this.slider_code].sidebar_width));
+                        width = (Math.ceil(this.config.block_width)) - (Math.ceil(this.config.sidebar_width));
                     }
                     else {
-                        width = (Math.ceil(this.config[this.slider_code].block_width));
+                        width = (Math.ceil(this.config.block_width));
                     }
                 }
                 else {
-                    width = (Math.ceil(this.config[this.slider_code].block_width));
+                    width = (Math.ceil(this.config.block_width));
                 }
 
                 width = width - leftIndent;
@@ -264,20 +246,20 @@ GomageSliderClass = Class.create({
                 content_text_bg.style.height = this.slides[slider_id].text_window_height + 'px';
             }
             else {
-                if (this.config[this.slider_code].show_navigation_bar == 2) // 2 - Sidebar
+                if (this.config.show_navigation_bar == 2) // 2 - Sidebar
                 {
-                    if (this.config[this.slider_code].navigation_bar_alignment != 3 //TOP
+                    if (this.config.navigation_bar_alignment != 3 //TOP
                         &&
-                        this.config[this.slider_code].navigation_bar_alignment != 4) //BOTTOM
+                        this.config.navigation_bar_alignment != 4) //BOTTOM
                     {
-                        height = (Math.ceil(this.config[this.slider_code].block_height));
+                        height = (Math.ceil(this.config.block_height));
                     }
                     else {
-                        height = (Math.ceil(this.config[this.slider_code].block_height)) - (Math.ceil(this.config[this.slider_code].sidebar_height));
+                        height = (Math.ceil(this.config.block_height)) - (Math.ceil(this.config.sidebar_height));
                     }
                 }
                 else {
-                    height = (Math.ceil(this.config[this.slider_code].block_height));
+                    height = (Math.ceil(this.config.block_height));
                 }
 
                 height = height - topIndent;
@@ -330,12 +312,10 @@ GomageSliderClass = Class.create({
                 content_text_bg.style.marginTop = this.slides[slider_id].text_window_top_indent + 'px';
             }
 
-            /*1.1*/
             content_text.innerHTML = this.slides[slider_id].slider_text;
-
         }
-        /*1.1*/
-        var image_link = $('gomage-slider-block-' + this.slider_code ).down('div.gomage-content-image a.slide-id-' + this.slider_code);
+
+        var image_link = $('gomage-slider-block-' + this.slider_code).down('div.gomage-content-image a.slide-id-' + this.slider_code);
         if (image_link) {
             var url = this.slides[slider_id].slider_link;
             var type = this.slides[slider_id].open_slider_link_in;
@@ -356,13 +336,13 @@ GomageSliderClass = Class.create({
             }
         }
 
-        var image_alt = $('gomage-slider-block-' + this.slider_code ).down('div.gomage-content-image img.gs-img-' + this.slider_code);
+        var image_alt = $('gomage-slider-block-' + this.slider_code).down('div.gomage-content-image img.gs-img-' + this.slider_code);
         if (image_alt) {
             var alt = this.slides[slider_id].alt_text;
             image_alt.writeAttribute('alt', alt);
         }
 
-        if (this.config[this.slider_code].show_navigation_bar == 2) // 2 - Sidebar
+        if (this.config.show_navigation_bar == 2) // 2 - Sidebar
         {
             $$('div.gomage-sidebar-item-' + this.slider_code).each(function (e) {
                 e.removeClassName('active');
@@ -383,27 +363,18 @@ GomageSliderClass = Class.create({
         }
 
         this.order_id = slider_id;
-        /*1.1*/
     },
 
     getInternetExplorerVersion: function () {
-
         var rv = -1; // Return value assumes failure.
-
         if (navigator.appName == 'Microsoft Internet Explorer') {
-
             var ua = navigator.userAgent;
-
             var re = new RegExp("MSIE ([0-9]{1,}[\.0-9]{0,})");
-
-            if (re.exec(ua) != null)
-
+            if (re.exec(ua) != null) {
                 rv = parseFloat(RegExp.$1);
-
+            }
         }
-
         return rv;
-
     },
 
     changeWithEffect: function (slider_id) {
@@ -439,16 +410,16 @@ GomageSliderClass = Class.create({
             var mode = 'vpanels';
         }
 
-        var img = $('gomage-slider-block-' + this.slider_code ).down('div.gomage-content-image a img.gs-img-' + this.slider_code);
+        var img = $('gomage-slider-block-' + this.slider_code).down('div.gomage-content-image a img.gs-img-' + this.slider_code);
 
         if (mode != 'simple') {
             $('slide-id-' + this.slider_code).innerHTML = '<img src="' + img.src + '" class="' + img.className + '">';
             new Effect.Wipe('slide-id-' + this.slider_code, {
                 slider_code: this.slider_code,
-                block_height: this.config[this.slider_code].block_height,
-                block_width: this.config[this.slider_code].block_width,
+                block_height: this.config.block_height,
+                block_width: this.config.block_width,
                 newImg: this.slides[slider_id].image,
-                duration: this.config[this.slider_code].transition_time,
+                duration: this.config.transition_time,
                 mode: mode
             });
         }
@@ -461,9 +432,9 @@ GomageSliderClass = Class.create({
 
     nextId: function () {
         if ($('slide-order-' + this.slider_code + '-' + (this.order_id + 1))) {
-            return this.order_id+1;
+            return this.order_id + 1;
         }
-        return this.start_order_id;
+        return 0;
     },
 
     prevId: function () {
@@ -472,7 +443,7 @@ GomageSliderClass = Class.create({
             return this.order_id - 1;
         }
 
-        return this.slides_count-1;
+        return this.slides_count - 1;
     }
 
 });

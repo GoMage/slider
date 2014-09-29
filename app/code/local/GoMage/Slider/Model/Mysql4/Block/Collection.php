@@ -10,12 +10,12 @@
  * @version      Release: 1.1
  */
 
-class GoMage_Slider_Model_Mysql4_Item_Collection extends Mage_Core_Model_Mysql4_Collection_Abstract
+class GoMage_Slider_Model_Mysql4_Block_Collection extends Mage_Core_Model_Mysql4_Collection_Abstract
 {
     public function _construct()
     {
         parent::_construct();
-        $this->_init('gomage_slider/item');
+        $this->_init('gomage_slider/block');
     }
     
     public function addStoreFilter($store)

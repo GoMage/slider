@@ -1,4 +1,5 @@
 <?php
+
 /**
  * GoMage Slider Extension
  *

@@ -10,7 +10,7 @@
  * @version      Release: 1.1
  */
 
-class GoMage_Slider_Block_Adminhtml_Items_Edit_Form extends Mage_Adminhtml_Block_Widget_Form{
+class GoMage_Slider_Block_Adminhtml_Blocks_Edit_Form extends Mage_Adminhtml_Block_Widget_Form{
   
   protected function _prepareForm(){
   	  

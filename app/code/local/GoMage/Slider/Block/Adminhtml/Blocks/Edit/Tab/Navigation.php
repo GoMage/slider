@@ -10,7 +10,7 @@
  * @version      Release: 1.1
  */
 
-class GoMage_Slider_Block_Adminhtml_Items_Edit_Tab_Navigation extends Mage_Adminhtml_Block_Widget_Form
+class GoMage_Slider_Block_Adminhtml_Blocks_Edit_Tab_Navigation extends Mage_Adminhtml_Block_Widget_Form
 {
 	
     protected function _prepareForm()
@@ -19,9 +19,9 @@ class GoMage_Slider_Block_Adminhtml_Items_Edit_Tab_Navigation extends Mage_Admin
         $form = new Varien_Data_Form();
         
         if(Mage::registry('gomage_slider')){
-        	$item = Mage::registry('gomage_slider');
+            $block = Mage::registry('gomage_slider');
         }else{
-        	$item = new Varien_Object();
+            $block = new Varien_Object();
         }
         
         $this->setForm($form);
@@ -98,7 +98,7 @@ class GoMage_Slider_Block_Adminhtml_Items_Edit_Tab_Navigation extends Mage_Admin
         ));
         
         
-        $form->setValues($item->getData());        
+        $form->setValues($block->getData());
         
         return parent::_prepareForm();
         

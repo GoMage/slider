@@ -103,18 +103,18 @@ class GoMage_Slider_Block_Adminhtml_Slides_Grid extends Mage_Adminhtml_Block_Wid
         $this->getMassactionBlock()->setFormFieldName('id');                
         
         $this->getMassactionBlock()->addItem('delete', array(
-            'label'     =>  $this->__('Delete Item(s)'),
+            'label'     =>  $this->__('Delete Slide(s)'),
             'url'       =>  $this->getUrl('*/*/massDelete'),
             'confirm'   =>  $this->__('Are you sure?')
         ));
         
         $this->getMassactionBlock()->addItem('enable', array(
-            'label'     =>  $this->__('Enable Item(s)'),
+            'label'     =>  $this->__('Enable Slide(s)'),
             'url'       =>  $this->getUrl('*/*/massEnable')            
         ));
         
         $this->getMassactionBlock()->addItem('disable', array(
-            'label'     =>  $this->__('Disable Item(s)'),
+            'label'     =>  $this->__('Disable Slide(s)'),
             'url'       =>  $this->getUrl('*/*/massDisable')            
         ));
         

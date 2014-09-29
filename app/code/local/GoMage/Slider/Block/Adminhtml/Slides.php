@@ -17,7 +17,7 @@ class GoMage_Slider_Block_Adminhtml_Slides extends Mage_Adminhtml_Block_Widget_G
         $this->_controller = 'adminhtml_slides';
         $this->_blockGroup = 'gomage_slider';
         $this->_headerText = $this->__('Manage Slides');
-        $this->_addButtonLabel = $this->__('Add Item');
+        $this->_addButtonLabel = $this->__('Add Slide');
         parent::__construct();
       }
 }

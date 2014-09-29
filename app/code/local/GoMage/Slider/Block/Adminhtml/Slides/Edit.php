@@ -53,7 +53,7 @@ class GoMage_Slider_Block_Adminhtml_Slides_Edit extends Mage_Adminhtml_Block_Wid
         if( Mage::registry('gomage_slider') && Mage::registry('gomage_slider')->getId() ) {
             return $this->__("Edit %s", $this->htmlEscape(Mage::registry('gomage_slider')->getName()));
         } else {
-            return $this->__('Add Item');
+            return $this->__('Add Slide');
         }
         
     }

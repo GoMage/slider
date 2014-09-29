@@ -10,11 +10,11 @@
  * @version      Release: 1.1
  */
 
-class GoMage_Slider_Model_Mysql4_Item extends Mage_Core_Model_Mysql4_Abstract
+class GoMage_Slider_Model_Mysql4_Block extends Mage_Core_Model_Mysql4_Abstract
 {
     public function _construct()
     {
-        $this->_init('gomage_slider/item', 'id');
+        $this->_init('gomage_slider/block', 'id');
     }
     
     protected function _afterLoad(Mage_Core_Model_Abstract $object)

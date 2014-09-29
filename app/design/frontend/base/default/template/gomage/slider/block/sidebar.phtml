@@ -10,23 +10,15 @@
  * @version      Release: 1.1
  */
 ?>
-<?php 
-	$item = $this->getItem();
-	$slides = $this->getSlides();
-    $_slide = $slides[$item->getId()];
-    $_slide = array_values($_slide);
-    $_slide = array_shift($_slide);
-?>
 <?php
-if ( isset( $slides[$item->getId()] ) ):
-	$i = 0;
-	foreach( $slides[$item->getId()] as $_order => $_item ):
-	?>
-		<div id="sidebar-item-order-<?php echo $this->slider_code ;?>-<?php echo $_order; ?>" class="gomage-sidebar-item-<?php echo $this->slider_code ;?> <?php echo ( $i == 0 ) ? 'active' : ''; ?>">
-			<a href="javascript:void(0)" id="slide-order-<?php echo $this->slider_code ;?>-<?php echo $_order;?>" data-id="<?php echo $_order;?>" class="sidebar-link gs-<?php echo $this->slider_code ;?>"><?php echo $_item->getSidebarContent(); ?></a>
-		</div>
-	<?php 
-	$i++;
-	endforeach;
-endif;
+    $slider_code = $this->getSliderCode();
+    $block = $this->getBlock();
+    $slides = $this->getSlides();
+    $i = 1;
 ?>
+<?php foreach( $slides as $_order => $_slide ): ?>
+    <div id="sidebar-item-order-<?php echo $slider_code ;?>-<?php echo $_order; ?>" class="gomage-sidebar-item-<?php echo $slider_code; ?> <?php echo ( $i == 1 ) ? 'active' : ''; ?>">
+        <a href="javascript:void(0)" id="slide-order-<?php echo $slider_code; ?>-<?php echo $_order; ?>" data-id="<?php echo $_order; ?>" class="sidebar-link gs-<?php echo $slider_code; ?>"><?php echo $_slide->getSidebarContent(); ?></a>
+    </div>
+	<?php $i++; ?>
+<?php endforeach; ?>

@@ -25,8 +25,8 @@ class GoMage_Slider_Block_Adminhtml_Slides_Edit_Tabs extends Mage_Adminhtml_Bloc
     protected function _prepareLayout(){
          
         $this->addTab('main_section', array(
-            'label'     =>  $this->__('Item information'),
-            'title'     =>  $this->__('Item information'),
+            'label'     =>  $this->__('Slide information'),
+            'title'     =>  $this->__('Slide information'),
             'content'   =>  $this->getLayout()->createBlock('gomage_slider/adminhtml_slides_edit_tab_main')->toHtml(),
         ));
         

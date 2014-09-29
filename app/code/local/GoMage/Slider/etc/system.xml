@@ -44,7 +44,6 @@
 							<show_in_website>0</show_in_website>
 							<show_in_store>0</show_in_store>
 						</key>
-						
 						<websites translate="label">
 							<label>Select Websites</label>
 							<frontend_type>checkbox</frontend_type>
@@ -55,12 +54,39 @@
 							<show_in_website>0</show_in_website>
 							<show_in_store>0</show_in_store>
 						</websites>
-						
+                        <ar>
+                            <frontend_type>hidden</frontend_type>
+                            <sort_order>25</sort_order>
+                            <show_in_default>0</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </ar>
+                        <time>
+                            <frontend_type>hidden</frontend_type>
+                            <sort_order>25</sort_order>
+
+                            <show_in_default>0</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </time>
+                        <installed>
+                            <frontend_type>hidden</frontend_type>
+                            <sort_order>25</sort_order>
+                            <show_in_default>0</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </installed>
+                        <count>
+                            <frontend_type>hidden</frontend_type>
+                            <sort_order>25</sort_order>
+                            <show_in_default>0</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </count>
 					</fields>
 				</slider>
 			</groups>
 		</gomage_activation>
-
         <gomage_notification>
             <label>Notifications</label>
             <tab>gomage</tab>

@@ -10,7 +10,7 @@
  * @version      Release: 1.1
  */
 
-class GoMage_Slider_Block_Adminhtml_Items_Edit_Tab_Main extends Mage_Adminhtml_Block_Widget_Form
+class GoMage_Slider_Block_Adminhtml_Blocks_Edit_Tab_Main extends Mage_Adminhtml_Block_Widget_Form
 {
 	
     protected function _prepareForm()
@@ -19,13 +19,13 @@ class GoMage_Slider_Block_Adminhtml_Items_Edit_Tab_Main extends Mage_Adminhtml_B
         $form = new Varien_Data_Form();
 
         if(Mage::registry('gomage_slider')){
-        	$item = Mage::registry('gomage_slider');
+        	$block = Mage::registry('gomage_slider');
         }else{
-        	$item = new Varien_Object();
+            $block = new Varien_Object();
         }
         
         $this->setForm($form);
-        $fieldset = $form->addFieldset('main_fieldset', array('legend' => $this->__('Item information')));
+        $fieldset = $form->addFieldset('main_fieldset', array('legend' => $this->__('Block information')));
 
         $this->_setFieldset(array(), $fieldset);
         
@@ -126,8 +126,7 @@ class GoMage_Slider_Block_Adminhtml_Items_Edit_Tab_Main extends Mage_Adminhtml_B
             'image'     => $this->getSkinUrl('images/grid-cal.gif'),            
         ));
 
-       $data = $item->getData();
-       $data['slider_code'] =  Mage::helper('gomage_slider')->generateCode();
+       $data = $block->getData();
        $form->setValues($data);
 
         return parent::_prepareForm();

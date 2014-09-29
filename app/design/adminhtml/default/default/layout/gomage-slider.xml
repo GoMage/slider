@@ -12,23 +12,23 @@
  */ 
  -->
 <layout version="1.0">
-    <gomage_slider_adminhtml_items_index>    	
+    <gomage_slider_adminhtml_blocks_index>
         <reference name="content">
-            <block type="gomage_slider/adminhtml_items" name="gomage_slider.admin.items" />
+            <block type="gomage_slider/adminhtml_blocks" name="gomage_slider.admin.blocks" />
         </reference>
-    </gomage_slider_adminhtml_items_index>
-    <gomage_slider_adminhtml_items_edit>
+    </gomage_slider_adminhtml_blocks_index>
+    <gomage_slider_adminhtml_blocks_edit>
     	<update handle="editor"/>
     	<reference name="head">     
             <action method="addJs"><script>gomage/slider-admin.js</script></action>           
         </reference> 
-    </gomage_slider_adminhtml_items_edit>
-    <gomage_slider_adminhtml_items_new>
+    </gomage_slider_adminhtml_blocks_edit>
+    <gomage_slider_adminhtml_blocks_new>
     	<update handle="editor"/>
     	<reference name="head">     
             <action method="addJs"><script>gomage/slider-admin.js</script></action>           
         </reference>
-    </gomage_slider_adminhtml_items_new>
+    </gomage_slider_adminhtml_blocks_new>
     
     
     <gomage_slider_adminhtml_slides_index>     

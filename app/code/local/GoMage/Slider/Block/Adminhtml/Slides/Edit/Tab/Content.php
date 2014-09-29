@@ -19,9 +19,9 @@ class GoMage_Slider_Block_Adminhtml_Slides_Edit_Tab_Content extends Mage_Adminht
         $form = new Varien_Data_Form();
         
         if(Mage::registry('gomage_slider')){
-        	$item = Mage::registry('gomage_slider');
+        	$slide = Mage::registry('gomage_slider');
         }else{
-        	$item = new Varien_Object();
+            $slide = new Varien_Object();
         }
         
         $this->setForm($form);
@@ -56,7 +56,7 @@ class GoMage_Slider_Block_Adminhtml_Slides_Edit_Tab_Content extends Mage_Adminht
             'title'     => $this->__('Slide Link'),
         ));
        
-        $form->setValues($item->getData());        
+        $form->setValues($slide->getData());
         
         return parent::_prepareForm();
         
