@@ -145,7 +145,7 @@ class GoMage_Slider_Model_Block extends Mage_Core_Model_Abstract
 
     public function blockCss()
     {
-        return 'width: ' . $this->getBlockWidth() . 'px; height: ' . $this->getBlockHeight() . 'px;';
+        return 'max-width: ' . $this->getBlockWidth() . 'px; max-height: ' . $this->getBlockHeight() . 'px;';
     }
 
     public function sideBarCss()
