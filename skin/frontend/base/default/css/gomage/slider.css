@@ -8,12 +8,16 @@
 
 /* Common
 -------------------------------------------------- */
+.gomage-content-image img{
+  max-width: 100%;
+  height: auto;
+  }
 .gomage-content-container {
-  position:absolute; 
+  /* position:absolute;  */
   z-index:2;
   }
 .gomage-image-container {
-  position:absolute; 
+  /* position:absolute;  */
   z-index:1;
   }
 .gomage-slider-sidebar div.active{
