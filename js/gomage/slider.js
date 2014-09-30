@@ -416,8 +416,8 @@ GomageSliderClass = Class.create({
             $('slide-id-' + this.slider_code).innerHTML = '<img src="' + img.src + '" class="' + img.className + '">';
             new Effect.Wipe('slide-id-' + this.slider_code, {
                 slider_code: this.slider_code,
-                block_height: this.getBlockHeight(),
-                block_width: this.getBlockWidth(),
+                block_height: $('gomage-slider-block-' + this.slider_code).down('div.gomage-slider-content').getHeight(),
+                block_width: $('gomage-slider-block-' + this.slider_code).down('div.gomage-slider-content').getWidth(),
                 newImg: this.slides[slider_id].image,
                 duration: this.config.transition_time,
                 mode: mode

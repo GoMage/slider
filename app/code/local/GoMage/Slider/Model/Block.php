@@ -54,24 +54,16 @@ class GoMage_Slider_Model_Block extends Mage_Core_Model_Abstract
     public function containerCssStyle()
     {
         $css = '';
-
         if ($this->getShowNavigationBar() == GoMage_Slider_Model_Adminhtml_System_Config_Source_Navigation_Show::SIDEBAR) {
-            if ($this->getNavigationBarAlignment() == GoMage_Slider_Model_Adminhtml_System_Config_Source_Navigation_Alignment::LEFT ||
-                $this->getNavigationBarAlignment() == GoMage_Slider_Model_Adminhtml_System_Config_Source_Navigation_Alignment::RIGHT
-            ) {
-                $css .= 'clear:both;';
-            }
-
             switch ($this->getNavigationBarAlignment()) {
                 case GoMage_Slider_Model_Adminhtml_System_Config_Source_Navigation_Alignment::RIGHT :
-                    $css .= 'float: left;';
+                    $css .= 'margin-right: ' . $this->getSidebarWidth() . 'px;';
                     break;
                 case GoMage_Slider_Model_Adminhtml_System_Config_Source_Navigation_Alignment::LEFT :
-                    $css .= 'float: right;';
+                    $css .= 'margin-left: ' . $this->getSidebarWidth() . 'px;';
                     break;
             }
         }
-
         return $css;
     }
 

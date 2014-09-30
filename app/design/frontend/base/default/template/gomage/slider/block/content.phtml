@@ -29,13 +29,14 @@
 
 <div class="gomage-content-item">
     <div class="gomage-image-container">
-        <div class="gomage-content-image" id="gomage-content-image">
+        <div class="gomage-content-image">
             <a id="slide-id-<?php echo $slider_code; ?>"
                class="slide-id-<?php echo $slider_code; ?>" <?php echo $slide->openSliderLinkInBlank(); ?>
-               <?php if ($slide->getSliderLink() != ''): ?>href="<?php echo $slide->getSliderLink(); ?>"<?php endif; ?>><img
-                    id="gomage-content-image-src" class="gs-img-<?php echo $slider_code; ?>"
+               <?php if ($slide->getSliderLink() != ''): ?>href="<?php echo $slide->getSliderLink(); ?>"<?php endif; ?>>
+                <img class="gs-img-<?php echo $slider_code; ?>"
                     alt="<?php echo $slide->getAltText(); ?>"
-                    src="<?php echo Mage::getBaseUrl('media') . 'slider/' . $slide->getImage(); ?>"/></a>
+                    src="<?php echo Mage::getBaseUrl('media') . 'slider/' . $slide->getImage(); ?>"/>
+            </a>
         </div>
     </div>
 
