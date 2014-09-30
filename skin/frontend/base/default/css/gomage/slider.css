@@ -8,16 +8,20 @@
 
 /* Common
 -------------------------------------------------- */
+[class^="gomage-slider-block"] a:focus{
+  outline: none;
+  }
+[class^="gomage-slider-block"]{
+  overflow: hidden;
+  }
 .gomage-content-image img{
   max-width: 100%;
   height: auto;
   }
 .gomage-content-container {
-  /* position:absolute;  */
   z-index:2;
   }
 .gomage-image-container {
-  /* position:absolute;  */
   z-index:1;
   }
 .gomage-slider-sidebar div.active{
