@@ -11,7 +11,7 @@
 [class^="gomage-slider-block"] a:focus{
   outline: none;
   }
-[class^="gomage-slider-block"]{
+.gomage-slider-container{
   overflow: hidden;
   }
 .gomage-content-image img{
