@@ -20,26 +20,36 @@
     <gomage_slider_adminhtml_blocks_edit>
     	<update handle="editor"/>
     	<reference name="head">     
-            <action method="addJs"><script>gomage/slider-admin.js</script></action>           
+            <action method="addJs"><script>gomage/slider-admin.js</script></action>
+            <action method="addJs"><script>jscolor/jscolor.js</script></action>
+            <action method="addJs"><script>jscolor/jscolor/jscolor.js</script></action>
         </reference> 
     </gomage_slider_adminhtml_blocks_edit>
     <gomage_slider_adminhtml_blocks_new>
     	<update handle="editor"/>
     	<reference name="head">     
-            <action method="addJs"><script>gomage/slider-admin.js</script></action>           
+            <action method="addJs"><script>gomage/slider-admin.js</script></action>
+            <action method="addJs"><script>jscolor/jscolor.js</script></action>
+            <action method="addJs"><script>jscolor/jscolor/jscolor.js</script></action>
         </reference>
     </gomage_slider_adminhtml_blocks_new>
-    
-    
     <gomage_slider_adminhtml_slides_index>     
         <reference name="content">
             <block type="gomage_slider/adminhtml_slides" name="gomage_slider.admin.slides" />
         </reference>
     </gomage_slider_adminhtml_slides_index>
     <gomage_slider_adminhtml_slides_edit>
-        <update handle="editor"/> 
+        <update handle="editor"/>
+        <reference name="head">
+            <action method="addJs"><script>jscolor/jscolor.js</script></action>
+            <action method="addJs"><script>jscolor/jscolor/jscolor.js</script></action>
+        </reference>
     </gomage_slider_adminhtml_slides_edit>
     <gomage_slider_adminhtml_slides_new>
-        <update handle="editor"/>           
+        <update handle="editor"/>
+        <reference name="head">
+            <action method="addJs"><script>jscolor/jscolor.js</script></action>
+            <action method="addJs"><script>jscolor/jscolor/jscolor.js</script></action>
+        </reference>
     </gomage_slider_adminhtml_slides_new>
 </layout>

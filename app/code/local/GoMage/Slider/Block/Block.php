@@ -140,7 +140,7 @@ class GoMage_Slider_Block_Block extends Mage_Core_Block_Template
             $result[$order]['text_window_alignment']   = $slide->getData('text_window_alignment');
             $result[$order]['text_window_width']       = $slide->getData('text_window_width');
             $result[$order]['text_window_height']      = $slide->getData('text_window_height');
-            $result[$order]['text_window_background']  = $slide->getData('text_window_background');
+            $result[$order]['text_window_background']  = Mage::helper('gomage_slider')->formatColor($slide->getData('text_window_background'));
             $result[$order]['text_window_opacity']     = $slide->getData('background_opacity');
             $result[$order]['text_window_left_indent'] = $slide->getData('text_window_left_indent');
             $result[$order]['text_window_top_indent']  = $slide->getData('text_window_top_indent');

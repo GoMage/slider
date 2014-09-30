@@ -10,6 +10,9 @@
  * @version      Release: 1.1
  */
 ?>
+<?php
+    $helper = Mage::helper('gomage_slider');
+?>
 <style type="text/css">
 
 <?php foreach ($this->getBlocks() as $block): ?>
@@ -33,29 +36,29 @@
     -------------------------------------------------- */
       /* Left Arrow */
      .gomage-slider-block-<?php echo $block->getCode() ?> .gomage-arrow-left span{
-        border-right-color: #<?php echo $block->getArrowColor(); ?>;
+        border-right-color: <?php echo $helper->formatColor($block->getArrowColor()); ?>;
      }
       /* Right Arrow */
      .gomage-slider-block-<?php echo $block->getCode() ?> .gomage-arrow-right span{
-        border-left-color: #<?php echo $block->getArrowColor(); ?>;
+        border-left-color: <?php echo $helper->formatColor($block->getArrowColor()); ?>;
      }
 
     /* Mouse Over Arrow Color
     -------------------------------------------------- */
       /* Left Arrow */
      .gomage-slider-block-<?php echo $block->getCode() ?> .gomage-arrow-left:hover span{
-        border-right-color: #<?php echo $block->getMouseOverColor(); ?>;
+        border-right-color: <?php echo $helper->formatColor($block->getMouseOverColor()); ?>;
      }
       /* Right Arrow */
      .gomage-slider-block-<?php echo $block->getCode() ?> .gomage-arrow-right:hover span{
-        border-left-color: #<?php echo $block->getMouseOverColor(); ?>;
+        border-left-color: <?php echo $helper->formatColor($block->getMouseOverColor()); ?>;
      }
 
 	<?php if ( $block->getArrowsType() == GoMage_Slider_Model_Adminhtml_System_Config_Source_Navigation_Arrowstype::STYLE2 ): ?>
       /* Mouse Over Background Color
       -------------------------------------------------- */
       .gomage-slider-block-<?php echo $block->getCode() ?> .gps-arrow:hover{
-        background: #<?php echo $block->getMouseOverBackground(); ?>;
+        background: <?php echo $helper->formatColor($block->getMouseOverBackground()); ?>;
       }
 	<?php endif; ?>
 
