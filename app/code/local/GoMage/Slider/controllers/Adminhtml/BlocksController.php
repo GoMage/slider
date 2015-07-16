@@ -13,6 +13,11 @@
 class GoMage_Slider_Adminhtml_BlocksController extends Mage_Adminhtml_Controller_Action
 {
 
+    protected function _isAllowed()
+    {
+        return Mage::getSingleton('admin/session')->isAllowed('cms/gomage_slider/gomage_manage_slider');
+    }
+
     protected function _initAction()
     {
         $this->loadLayout()
