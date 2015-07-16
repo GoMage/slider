@@ -7,7 +7,7 @@
  * @author       GoMage
  * @license      http://www.gomage.com/license-agreement/  Single domain license
  * @terms of use http://www.gomage.com/terms-of-use
- * @version      Release: 1.1
+ * @version      Release: 1.2
  */
 
 class GoMage_Slider_Block_Adminhtml_Blocks_Edit_Tab_Main extends Mage_Adminhtml_Block_Widget_Form

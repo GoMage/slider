@@ -7,7 +7,7 @@
  * @author       GoMage
  * @license      http://www.gomage.com/license-agreement/  Single domain license
  * @terms of use http://www.gomage.com/terms-of-use
- * @version      Release: 1.1
+ * @version      Release: 1.2
  */
 
 class GoMage_Slider_Block_Adminhtml_Helper_Image extends Varien_Data_Form_Element_Image
