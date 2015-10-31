@@ -37,13 +37,13 @@
     </frontend>
     <admin>
         <routers>
-			<gomage_slider>
-				<use>admin</use>
-				<args>
-					<module>GoMage_Slider</module>
-					<frontName>gomage_slider</frontName>
-				</args>
-			</gomage_slider>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <gomage_slider before="Mage_Adminhtml">GoMage_Slider_Adminhtml</gomage_slider>
+                    </modules>
+                </args>
+            </adminhtml>
         </routers>
     </admin>
     <adminhtml>
@@ -81,17 +81,17 @@
 					<gomage_slider> 
 						<title>Slider</title>
 						<sort_order>20</sort_order>           
-						<action>gomage_slider/adminhtml_blocks</action>
+						<action>adminhtml/gomage_slider_blocks</action>
 						<children>
 							<gomage_manage_slider>
 								<title>Manage Slider Blocks</title>
 								<sort_order>10</sort_order>
-								<action>gomage_slider/adminhtml_blocks</action>
+								<action>adminhtml/gomage_slider_blocks</action>
 							</gomage_manage_slider>
 							<gomage_manage_slider_slides>
                                 <title>Manage Slides</title>
                                 <sort_order>10</sort_order>
-                                <action>gomage_slider/adminhtml_slides</action>
+                                <action>adminhtml/gomage_slider_slides</action>
                             </gomage_manage_slider_slides>
 						</children>	
 					</gomage_slider> 

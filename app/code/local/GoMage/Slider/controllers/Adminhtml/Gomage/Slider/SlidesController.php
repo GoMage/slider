@@ -10,7 +10,7 @@
  * @terms of use http://www.gomage.com/terms-of-use
  * @version      Release: 1.2
  */
-class GoMage_Slider_Adminhtml_SlidesController extends Mage_Adminhtml_Controller_Action
+class GoMage_Slider_Adminhtml_Gomage_Slider_SlidesController extends Mage_Adminhtml_Controller_Action
 {
     protected function _isAllowed()
     {
